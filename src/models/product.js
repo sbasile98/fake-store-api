@@ -1,5 +1,12 @@
 const db = require('../config/database');
 
+function generateId() {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let id = '';
+  for (let i = 0; i < 6; i++) id += chars[Math.floor(Math.random() * chars.length)];
+  return id;
+}
+
 const Product = {
   findAll({ page = 1, limit = 10, offset = 0, category, search, minPrice, maxPrice, sort } = {}) {
     let where = [];
@@ -69,16 +76,20 @@ const Product = {
   },
 
   create(data) {
-    const result = db.prepare(
-      `INSERT INTO products (title, description, price, discountPrice, stock, sku, categoryId, image, images, rating, ratingCount, brand)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    let id = generateId();
+    while (db.prepare('SELECT 1 FROM products WHERE id = ?').get(id)) {
+      id = generateId();
+    }
+    db.prepare(
+      `INSERT INTO products (id, title, description, price, discountPrice, stock, sku, categoryId, image, images, rating, ratingCount, brand)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
     ).run(
-      data.title, data.description, data.price, data.discountPrice || null,
+      id, data.title, data.description, data.price, data.discountPrice || null,
       data.stock || 100, data.sku, data.categoryId, data.image,
       data.images ? JSON.stringify(data.images) : null,
       data.rating || 0, data.ratingCount || 0, data.brand || null
     );
-    return Product.findById(result.lastInsertRowid);
+    return Product.findById(id);
   },
 
   update(id, data) {

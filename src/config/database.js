@@ -30,7 +30,7 @@ db.exec(`
   );
 
   CREATE TABLE IF NOT EXISTS products (
-    id            INTEGER PRIMARY KEY AUTOINCREMENT,
+    id            TEXT PRIMARY KEY,
     title         TEXT NOT NULL,
     description   TEXT NOT NULL,
     price         REAL NOT NULL,
@@ -58,7 +58,7 @@ db.exec(`
   CREATE TABLE IF NOT EXISTS cart_items (
     id        INTEGER PRIMARY KEY AUTOINCREMENT,
     cartId    INTEGER NOT NULL,
-    productId INTEGER NOT NULL,
+    productId TEXT NOT NULL,
     quantity  INTEGER DEFAULT 1,
     FOREIGN KEY (cartId) REFERENCES carts(id) ON DELETE CASCADE,
     FOREIGN KEY (productId) REFERENCES products(id),
@@ -80,7 +80,7 @@ db.exec(`
   CREATE TABLE IF NOT EXISTS order_items (
     id        INTEGER PRIMARY KEY AUTOINCREMENT,
     orderId   INTEGER NOT NULL,
-    productId INTEGER NOT NULL,
+    productId TEXT NOT NULL,
     quantity  INTEGER NOT NULL,
     price     REAL NOT NULL,
     FOREIGN KEY (orderId) REFERENCES orders(id) ON DELETE CASCADE,
