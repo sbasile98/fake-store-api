@@ -10,45 +10,46 @@
     .hero { background: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1a1a2e 100%); border-bottom: 1px solid #334155; padding: 60px 20px; text-align: center; }
     .hero h1 { font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; }
     .hero p { font-size: 1.2rem; color: #94a3b8; max-width: 600px; margin: 0 auto 24px; }
-    .hero .base-url { display: inline-block; background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 10px 24px; font-family: monospace; font-size: 1rem; color: #60a5fa; }
+    .hero .base-url { display: inline-block; background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 10px 24px; font-family: monospace; font-size: 1rem; color: #60a5fa; word-break: break-all; }
     .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
-    .quick-start { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 48px; }
-    .quick-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 24px; }
+    .quick-start { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 48px; }
+    .quick-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 24px; overflow: hidden; }
     .quick-card h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: #64748b; margin-bottom: 16px; }
-    .account-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #334155; }
+    .account-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #334155; gap: 8px; flex-wrap: wrap; }
     .account-row:last-child { border-bottom: none; }
-    .account-role { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.5px; }
+    .account-role { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.5px; white-space: nowrap; }
     .role-admin { background: #7c3aed33; color: #a78bfa; }
     .role-customer { background: #2563eb33; color: #60a5fa; }
-    .account-creds { font-family: monospace; font-size: 0.9rem; color: #cbd5e1; }
+    .account-creds { font-family: monospace; font-size: 0.85rem; color: #cbd5e1; word-break: break-all; }
     .code-block { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 16px; font-family: monospace; font-size: 0.85rem; color: #e2e8f0; overflow-x: auto; white-space: pre; line-height: 1.8; }
     .code-block .comment { color: #64748b; }
-    .code-block .key { color: #f472b6; }
     .code-block .string { color: #34d399; }
     .auth-box { background: linear-gradient(135deg, #1e293b, #1a1a2e); border: 1px solid #4c1d95; border-radius: 12px; padding: 24px; margin-bottom: 48px; }
     .auth-box h2 { color: #a78bfa; font-size: 1.3rem; margin-bottom: 8px; }
     .auth-box p { color: #94a3b8; margin-bottom: 16px; }
-    .auth-header-example { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 14px 20px; font-family: monospace; font-size: 0.95rem; }
+    .auth-header-example { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 14px 20px; font-family: monospace; font-size: 0.95rem; overflow-x: auto; }
     .auth-header-example span { color: #64748b; }
     .auth-header-example code { color: #a78bfa; }
     .auth-n8n { margin-top: 16px; padding: 14px 20px; background: #1e293b; border: 1px solid #334155; border-radius: 8px; font-size: 0.9rem; color: #94a3b8; }
     .auth-n8n strong { color: #e2e8f0; }
+    .auth-n8n ol { margin: 8px 0 0 20px; }
+    .auth-n8n li { margin-bottom: 4px; }
     .section { margin-bottom: 48px; }
-    .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
-    .section-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+    .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+    .section-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
     .section-header h2 { font-size: 1.4rem; font-weight: 700; }
-    .section-header .badge { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; padding: 3px 10px; border-radius: 20px; font-weight: 600; }
+    .section-header .badge { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; padding: 3px 10px; border-radius: 20px; font-weight: 600; white-space: nowrap; }
     .badge-auth { background: #d9770633; color: #fb923c; }
     .badge-admin { background: #dc262633; color: #f87171; }
     .endpoint { background: #1e293b; border: 1px solid #334155; border-radius: 10px; margin-bottom: 10px; overflow: hidden; transition: border-color 0.2s; }
     .endpoint:hover { border-color: #475569; }
-    .endpoint-row { display: flex; align-items: center; padding: 14px 20px; gap: 16px; cursor: pointer; }
-    .method { font-family: monospace; font-weight: 700; font-size: 0.8rem; padding: 4px 12px; border-radius: 6px; min-width: 72px; text-align: center; }
+    .endpoint-row { display: flex; align-items: center; padding: 14px 20px; gap: 12px; cursor: pointer; flex-wrap: wrap; }
+    .method { font-family: monospace; font-weight: 700; font-size: 0.8rem; padding: 4px 12px; border-radius: 6px; min-width: 72px; text-align: center; flex-shrink: 0; }
     .method-get { background: #16a34a33; color: #4ade80; }
     .method-post { background: #2563eb33; color: #60a5fa; }
     .method-put { background: #d9770633; color: #fb923c; }
     .method-delete { background: #dc262633; color: #f87171; }
-    .endpoint-path { font-family: monospace; font-size: 0.95rem; color: #e2e8f0; flex: 1; }
+    .endpoint-path { font-family: monospace; font-size: 0.95rem; color: #e2e8f0; flex: 1; min-width: 0; word-break: break-all; }
     .endpoint-path .param { color: #f472b6; }
     .endpoint-desc { color: #94a3b8; font-size: 0.85rem; }
     .endpoint-details { display: none; padding: 0 20px 16px; border-top: 1px solid #334155; }
@@ -56,9 +57,29 @@
     .detail-section { margin-top: 12px; }
     .detail-section h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin-bottom: 8px; }
     .params-table { width: 100%; border-collapse: collapse; }
-    .params-table td { padding: 6px 12px; font-size: 0.85rem; border-bottom: 1px solid #1e293b; }
-    .params-table td:first-child { font-family: monospace; color: #f472b6; width: 140px; }
+    .params-table td { padding: 6px 12px; font-size: 0.85rem; border-bottom: 1px solid #1e293b; word-break: break-word; }
+    .params-table td:first-child { font-family: monospace; color: #f472b6; min-width: 100px; }
     .params-table td:last-child { color: #94a3b8; }
+
+    /* n8n config box */
+    .n8n-config { background: #0f172a; border: 1px solid #4c1d95; border-radius: 10px; margin-top: 14px; overflow: hidden; }
+    .n8n-config-header { background: #4c1d9522; padding: 10px 16px; font-size: 0.8rem; font-weight: 700; color: #a78bfa; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; }
+    .n8n-config-body { padding: 14px 16px; }
+    .n8n-row { display: flex; gap: 12px; padding: 6px 0; border-bottom: 1px solid #1e293b; align-items: flex-start; }
+    .n8n-row:last-child { border-bottom: none; }
+    .n8n-label { font-size: 0.78rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; min-width: 110px; flex-shrink: 0; padding-top: 2px; }
+    .n8n-value { font-family: monospace; font-size: 0.85rem; color: #e2e8f0; word-break: break-all; }
+    .n8n-value .muted { color: #64748b; font-size: 0.8rem; font-family: sans-serif; }
+    .n8n-value code { background: #334155; padding: 2px 6px; border-radius: 4px; font-size: 0.82rem; }
+    .n8n-json { background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px 14px; font-family: monospace; font-size: 0.82rem; color: #c4b5fd; line-height: 1.6; overflow-x: auto; white-space: pre; margin-top: 4px; }
+    .n8n-json .jk { color: #f472b6; }
+    .n8n-json .jv { color: #34d399; }
+    .n8n-json .jn { color: #60a5fa; }
+    .n8n-qp { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+    .n8n-qp-item { background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 4px 10px; font-family: monospace; font-size: 0.8rem; }
+    .n8n-qp-item .qk { color: #f472b6; }
+    .n8n-qp-item .qv { color: #34d399; }
+
     .curl-wrapper { position: relative; margin-top: 12px; }
     .curl-block { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 14px 16px; padding-right: 50px; font-family: monospace; font-size: 0.82rem; color: #e2e8f0; overflow-x: auto; white-space: pre; line-height: 1.7; }
     .curl-block .c { color: #60a5fa; }
@@ -66,35 +87,76 @@
     .curl-block .u { color: #34d399; }
     .curl-block .h { color: #fbbf24; }
     .curl-block .d { color: #c4b5fd; }
-    .copy-btn { position: absolute; top: 8px; right: 8px; background: #334155; border: 1px solid #475569; color: #94a3b8; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; cursor: pointer; transition: all 0.2s; font-family: sans-serif; }
+    .copy-btn { position: absolute; top: 8px; right: 8px; background: #334155; border: 1px solid #475569; color: #94a3b8; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; cursor: pointer; transition: all 0.2s; font-family: sans-serif; z-index: 1; }
     .copy-btn:hover { background: #475569; color: #e2e8f0; }
     .copy-btn.copied { background: #16a34a55; color: #4ade80; border-color: #16a34a; }
-    .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 20px; }
+    .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 20px; }
     .cat-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 16px; text-align: center; transition: transform 0.2s, border-color 0.2s; }
     .cat-card:hover { transform: translateY(-2px); border-color: #60a5fa; }
     .cat-icon { font-size: 2rem; margin-bottom: 8px; }
     .cat-name { font-weight: 600; font-size: 0.9rem; }
     .cat-slug { font-family: monospace; font-size: 0.75rem; color: #64748b; margin-top: 4px; }
     .flow { display: flex; flex-wrap: wrap; gap: 0; align-items: center; margin: 24px 0; }
-    .flow-step { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 16px 20px; flex: 1; min-width: 200px; }
+    .flow-step { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 16px 20px; flex: 1; min-width: 180px; }
     .flow-step-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin-bottom: 4px; }
     .flow-step-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
-    .flow-step-detail { font-family: monospace; font-size: 0.8rem; color: #60a5fa; }
+    .flow-step-detail { font-family: monospace; font-size: 0.8rem; color: #60a5fa; word-break: break-all; }
     .flow-arrow { color: #475569; font-size: 1.5rem; padding: 0 8px; }
     .response-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
-    @media (max-width: 600px) { .response-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 2rem; } .endpoint-desc { display: none; } }
     .response-card { border-radius: 10px; overflow: hidden; }
     .response-card-header { padding: 10px 16px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
     .response-success .response-card-header { background: #16a34a33; color: #4ade80; }
     .response-error .response-card-header { background: #dc262633; color: #f87171; }
     .response-card pre { background: #0f172a; padding: 16px; font-size: 0.82rem; line-height: 1.7; overflow-x: auto; }
     footer { text-align: center; padding: 40px 20px; color: #475569; font-size: 0.85rem; border-top: 1px solid #1e293b; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero { padding: 40px 16px; }
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
+      .hero .base-url { font-size: 0.85rem; padding: 8px 16px; }
+      .container { padding: 24px 12px; }
+      .quick-start { grid-template-columns: 1fr; }
+      .auth-box { padding: 16px; }
+      .auth-header-example { padding: 10px 14px; font-size: 0.85rem; }
+      .section-header { gap: 8px; }
+      .section-header h2 { font-size: 1.2rem; }
+      .endpoint-row { padding: 12px 14px; gap: 8px; }
+      .method { min-width: 60px; font-size: 0.75rem; padding: 3px 8px; }
+      .endpoint-path { font-size: 0.85rem; }
+      .endpoint-desc { display: none; }
+      .endpoint-details { padding: 0 14px 14px; }
+      .n8n-row { flex-direction: column; gap: 2px; }
+      .n8n-label { min-width: auto; }
+      .curl-block { font-size: 0.75rem; padding: 12px; padding-right: 50px; }
+      .params-table td { padding: 4px 8px; font-size: 0.8rem; }
+      .params-table td:first-child { min-width: 80px; }
+      .categories-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; }
+      .cat-card { padding: 12px; }
+      .cat-icon { font-size: 1.5rem; }
+      .cat-name { font-size: 0.8rem; }
+      .flow { flex-direction: column; align-items: stretch; }
+      .flow-step { min-width: auto; }
+      .flow-arrow { transform: rotate(90deg); text-align: center; padding: 4px 0; }
+      .response-grid { grid-template-columns: 1fr; }
+      .response-card pre { font-size: 0.75rem; padding: 12px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 1.6rem; }
+      .hero .base-url { font-size: 0.75rem; }
+      .account-row { flex-direction: column; align-items: flex-start; gap: 4px; }
+      .method { min-width: 55px; font-size: 0.7rem; }
+      .endpoint-path { font-size: 0.8rem; }
+      .n8n-config-header { font-size: 0.7rem; }
+    }
   </style>
 </head>
 <body>
 
   <div class="hero">
-    <h1>🛒 Fake Store API</h1>
+    <h1>Fake Store API</h1>
     <p>API e-commerce per il corso di formazione n8n. Simula un negozio online con autenticazione Basic Auth.</p>
     <div class="base-url">{{BASE_URL}}/api</div>
   </div>
@@ -104,7 +166,7 @@
     <!-- QUICK START -->
     <div class="quick-start">
       <div class="quick-card">
-        <h3>🔑 Account di Test</h3>
+        <h3>Account di Test</h3>
         <div class="account-row">
           <span class="account-role role-admin">Admin</span>
           <span class="account-creds">admin@fakestoreapi.com / admin123</span>
@@ -127,26 +189,39 @@
         </div>
       </div>
       <div class="quick-card">
-        <h3>⚡ Avvio Rapido</h3>
-        <div class="code-block"><span class="comment"># Installa e avvia</span>
-npm install
-npm start
+        <h3>Configurazione n8n</h3>
+        <div class="code-block"><span class="comment"># 1. Crea una credenziale Basic Auth in n8n:</span>
+<span class="comment">#    Credentials > New > HTTP Basic Auth</span>
+<span class="comment">#    User: mario.rossi@example.com</span>
+<span class="comment">#    Password: password123</span>
 
-<span class="comment"># Prova subito una chiamata</span>
-curl <span class="string">-u mario.rossi@example.com:password123</span> \
-  {{BASE_URL}}/api/products</div>
+<span class="comment"># 2. Nel nodo HTTP Request:</span>
+<span class="comment">#    Authentication > Predefined Credential Type</span>
+<span class="comment">#    Credential Type > HTTP Basic Auth</span>
+<span class="comment">#    Seleziona la credenziale creata</span>
+
+<span class="comment"># 3. Compila Method, URL, parametri e body</span>
+<span class="comment">#    come indicato per ogni endpoint qui sotto</span></div>
       </div>
     </div>
 
     <!-- AUTH -->
     <div class="auth-box">
-      <h2>🔐 Autenticazione Basic Auth</h2>
-      <p>Tutte le chiamate API richiedono autenticazione con email e password. Usa Basic Auth su ogni richiesta:</p>
+      <h2>Autenticazione Basic Auth</h2>
+      <p>Tutte le chiamate API richiedono autenticazione con email e password.</p>
       <div class="auth-header-example">
-        <span>curl</span> <code>-u email:password</code> <span>URL</span>
+        <span>Header:</span> <code>Authorization: Basic base64(email:password)</code>
       </div>
       <div class="auth-n8n">
-        <strong>In n8n:</strong> Nel nodo HTTP Request, vai in Authentication > seleziona <strong>Basic Auth</strong> > inserisci email come User e password come Password. Fatto! Tutte le chiamate saranno autenticate.
+        <strong>Come configurare in n8n (HTTP Request Node):</strong>
+        <ol>
+          <li>Vai su <strong>Authentication</strong> > scegli <strong>Predefined Credential Type</strong></li>
+          <li>In <strong>Credential Type</strong> seleziona <strong>HTTP Basic Auth</strong></li>
+          <li>Clicca su <strong>Create New Credential</strong> e inserisci:<br>
+            &nbsp;&nbsp;&nbsp;User: <code style="color:#34d399">mario.rossi@example.com</code><br>
+            &nbsp;&nbsp;&nbsp;Password: <code style="color:#34d399">password123</code></li>
+          <li>La credenziale viene riutilizzata su tutti i nodi HTTP Request</li>
+        </ol>
       </div>
     </div>
 
@@ -159,6 +234,7 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
         <span class="badge badge-admin">Scrittura: Admin</span>
       </div>
 
+      <!-- GET /api/products -->
       <div class="endpoint">
         <div class="endpoint-row" onclick="toggle(this)">
           <span class="method method-get">GET</span>
@@ -178,18 +254,54 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
               <tr><td>sort</td><td>price_asc, price_desc, rating, newest</td></tr>
             </table>
           </div>
+
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">GET</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/products</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Send Query Params</div>
+                <div class="n8n-value">
+                  <span class="muted">Attiva "Send Query Parameters" e aggiungi:</span>
+                  <div class="n8n-qp">
+                    <span class="n8n-qp-item"><span class="qk">search</span> = <span class="qv">cuffie</span></span>
+                    <span class="n8n-qp-item"><span class="qk">minPrice</span> = <span class="qv">50</span></span>
+                    <span class="n8n-qp-item"><span class="qk">maxPrice</span> = <span class="qv">200</span></span>
+                    <span class="n8n-qp-item"><span class="qk">sort</span> = <span class="qv">price_asc</span></span>
+                    <span class="n8n-qp-item"><span class="qk">limit</span> = <span class="qv">5</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl="curl -u mario.rossi@example.com:password123 {{BASE_URL}}/api/products"><span class="c">curl</span> <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> <span class="h">{{BASE_URL}}/api/products</span></div>
+            <div class="curl-block" data-curl="curl -X GET -u mario.rossi@example.com:password123 {{BASE_URL}}/api/products"><span class="c">curl</span> <span class="f">-X GET</span> \
+  <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
+  <span class="h">{{BASE_URL}}/api/products</span></div>
           </div>
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl='curl -u mario.rossi@example.com:password123 "{{BASE_URL}}/api/products?search=cuffie&minPrice=50&maxPrice=200&sort=price_asc&limit=5"'><span class="c">curl</span> <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
+            <div class="curl-block" data-curl='curl -X GET -u mario.rossi@example.com:password123 "{{BASE_URL}}/api/products?search=cuffie&minPrice=50&maxPrice=200&sort=price_asc&limit=5"'><span class="c">curl</span> <span class="f">-X GET</span> \
+  <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
   <span class="h">"{{BASE_URL}}/api/products?search=cuffie&amp;minPrice=50&amp;maxPrice=200&amp;sort=price_asc&amp;limit=5"</span></div>
           </div>
         </div>
       </div>
 
+      <!-- GET /api/products/all -->
       <div class="endpoint">
         <div class="endpoint-row" onclick="toggle(this)">
           <span class="method method-get">GET</span>
@@ -197,13 +309,33 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
           <span class="endpoint-desc">Tutti i prodotti (senza paginazione)</span>
         </div>
         <div class="endpoint-details">
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">GET</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/products/all</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
+              </div>
+            </div>
+          </div>
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl="curl -u mario.rossi@example.com:password123 {{BASE_URL}}/api/products/all"><span class="c">curl</span> <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> <span class="h">{{BASE_URL}}/api/products/all</span></div>
+            <div class="curl-block" data-curl="curl -X GET -u mario.rossi@example.com:password123 {{BASE_URL}}/api/products/all"><span class="c">curl</span> <span class="f">-X GET</span> \
+  <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
+  <span class="h">{{BASE_URL}}/api/products/all</span></div>
           </div>
         </div>
       </div>
 
+      <!-- GET /api/products/:id -->
       <div class="endpoint">
         <div class="endpoint-row" onclick="toggle(this)">
           <span class="method method-get">GET</span>
@@ -211,13 +343,33 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
           <span class="endpoint-desc">Dettaglio prodotto</span>
         </div>
         <div class="endpoint-details">
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">GET</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/products/1</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
+              </div>
+            </div>
+          </div>
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl="curl -u mario.rossi@example.com:password123 {{BASE_URL}}/api/products/1"><span class="c">curl</span> <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> <span class="h">{{BASE_URL}}/api/products/1</span></div>
+            <div class="curl-block" data-curl="curl -X GET -u mario.rossi@example.com:password123 {{BASE_URL}}/api/products/1"><span class="c">curl</span> <span class="f">-X GET</span> \
+  <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
+  <span class="h">{{BASE_URL}}/api/products/1</span></div>
           </div>
         </div>
       </div>
 
+      <!-- POST /api/products -->
       <div class="endpoint">
         <div class="endpoint-row" onclick="toggle(this)">
           <span class="method method-post">POST</span>
@@ -234,11 +386,51 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
               <tr><td>sku</td><td>Codice SKU univoco (obbligatorio)</td></tr>
               <tr><td>categoryId</td><td>ID categoria (obbligatorio)</td></tr>
               <tr><td>image</td><td>URL immagine (obbligatorio)</td></tr>
+              <tr><td>brand</td><td>Marca (opzionale)</td></tr>
+              <tr><td>discountPrice</td><td>Prezzo scontato (opzionale)</td></tr>
+              <tr><td>stock</td><td>Quantita' disponibile (opzionale)</td></tr>
             </table>
           </div>
+
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">POST</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/products</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth <span class="muted">(account Admin)</span></div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Body Content Type</div>
+                <div class="n8n-value">JSON</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Specify Body</div>
+                <div class="n8n-value">
+                  <span class="muted">Scegli "Using Fields Below" e aggiungi:</span>
+                  <div class="n8n-json"><span class="jk">"title"</span>: <span class="jv">"Nuovo Prodotto"</span>
+<span class="jk">"description"</span>: <span class="jv">"Descrizione del prodotto"</span>
+<span class="jk">"price"</span>: <span class="jn">49.99</span>
+<span class="jk">"sku"</span>: <span class="jv">"NEW-0001"</span>
+<span class="jk">"categoryId"</span>: <span class="jn">1</span>
+<span class="jk">"image"</span>: <span class="jv">"https://picsum.photos/400/400"</span>
+<span class="jk">"brand"</span>: <span class="jv">"MioMarchio"</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl='curl -X POST -u admin@fakestoreapi.com:admin123 -H "Content-Type: application/json" -d "{\"title\": \"Nuovo Prodotto\", \"description\": \"Descrizione del prodotto\", \"price\": 49.99, \"sku\": \"NEW-0001\", \"categoryId\": 1, \"image\": \"https://picsum.photos/400/400\", \"brand\": \"MioMarchio\"}" {{BASE_URL}}/api/products'><span class="c">curl</span> <span class="f">-X POST</span> <span class="f">-u</span> <span class="u">admin@fakestoreapi.com:admin123</span> \
+            <div class="curl-block" data-curl='curl -X POST -u admin@fakestoreapi.com:admin123 -H "Content-Type: application/json" -d "{\"title\": \"Nuovo Prodotto\", \"description\": \"Descrizione del prodotto\", \"price\": 49.99, \"sku\": \"NEW-0001\", \"categoryId\": 1, \"image\": \"https://picsum.photos/400/400\", \"brand\": \"MioMarchio\"}" {{BASE_URL}}/api/products'><span class="c">curl</span> <span class="f">-X POST</span> \
+  <span class="f">-u</span> <span class="u">admin@fakestoreapi.com:admin123</span> \
   <span class="f">-H</span> <span class="h">"Content-Type: application/json"</span> \
   <span class="f">-d</span> <span class="d">'{
     "title": "Nuovo Prodotto",
@@ -254,6 +446,7 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
         </div>
       </div>
 
+      <!-- PUT /api/products/:id -->
       <div class="endpoint">
         <div class="endpoint-row" onclick="toggle(this)">
           <span class="method method-put">PUT</span>
@@ -261,9 +454,39 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
           <span class="endpoint-desc">Aggiorna prodotto (Admin)</span>
         </div>
         <div class="endpoint-details">
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">PUT</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/products/1</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth <span class="muted">(account Admin)</span></div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Body Content Type</div>
+                <div class="n8n-value">JSON</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Specify Body</div>
+                <div class="n8n-value">
+                  <span class="muted">Scegli "Using Fields Below" e aggiungi:</span>
+                  <div class="n8n-json"><span class="jk">"price"</span>: <span class="jn">129.99</span>
+<span class="jk">"discountPrice"</span>: <span class="jn">99.99</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl='curl -X PUT -u admin@fakestoreapi.com:admin123 -H "Content-Type: application/json" -d "{\"price\": 129.99, \"discountPrice\": 99.99}" {{BASE_URL}}/api/products/1'><span class="c">curl</span> <span class="f">-X PUT</span> <span class="f">-u</span> <span class="u">admin@fakestoreapi.com:admin123</span> \
+            <div class="curl-block" data-curl='curl -X PUT -u admin@fakestoreapi.com:admin123 -H "Content-Type: application/json" -d "{\"price\": 129.99, \"discountPrice\": 99.99}" {{BASE_URL}}/api/products/1'><span class="c">curl</span> <span class="f">-X PUT</span> \
+  <span class="f">-u</span> <span class="u">admin@fakestoreapi.com:admin123</span> \
   <span class="f">-H</span> <span class="h">"Content-Type: application/json"</span> \
   <span class="f">-d</span> <span class="d">'{"price": 129.99, "discountPrice": 99.99}'</span> \
   <span class="h">{{BASE_URL}}/api/products/1</span></div>
@@ -271,6 +494,7 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
         </div>
       </div>
 
+      <!-- DELETE /api/products/:id -->
       <div class="endpoint">
         <div class="endpoint-row" onclick="toggle(this)">
           <span class="method method-delete">DELETE</span>
@@ -278,9 +502,28 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
           <span class="endpoint-desc">Elimina prodotto (Admin)</span>
         </div>
         <div class="endpoint-details">
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">DELETE</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/products/1</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth <span class="muted">(account Admin)</span></div>
+              </div>
+            </div>
+          </div>
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl="curl -X DELETE -u admin@fakestoreapi.com:admin123 {{BASE_URL}}/api/products/1"><span class="c">curl</span> <span class="f">-X DELETE</span> <span class="f">-u</span> <span class="u">admin@fakestoreapi.com:admin123</span> <span class="h">{{BASE_URL}}/api/products/1</span></div>
+            <div class="curl-block" data-curl="curl -X DELETE -u admin@fakestoreapi.com:admin123 {{BASE_URL}}/api/products/1"><span class="c">curl</span> <span class="f">-X DELETE</span> \
+  <span class="f">-u</span> <span class="u">admin@fakestoreapi.com:admin123</span> \
+  <span class="h">{{BASE_URL}}/api/products/1</span></div>
           </div>
         </div>
       </div>
@@ -301,9 +544,28 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
           <span class="endpoint-desc">Lista tutte le categorie</span>
         </div>
         <div class="endpoint-details">
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">GET</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/categories</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
+              </div>
+            </div>
+          </div>
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl="curl -u mario.rossi@example.com:password123 {{BASE_URL}}/api/categories"><span class="c">curl</span> <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> <span class="h">{{BASE_URL}}/api/categories</span></div>
+            <div class="curl-block" data-curl="curl -X GET -u mario.rossi@example.com:password123 {{BASE_URL}}/api/categories"><span class="c">curl</span> <span class="f">-X GET</span> \
+  <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
+  <span class="h">{{BASE_URL}}/api/categories</span></div>
           </div>
         </div>
       </div>
@@ -315,9 +577,37 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
           <span class="endpoint-desc">Prodotti per categoria</span>
         </div>
         <div class="endpoint-details">
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">GET</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/categories/1/products</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Send Query Params</div>
+                <div class="n8n-value">
+                  <span class="muted">Opzionale - Attiva "Send Query Parameters":</span>
+                  <div class="n8n-qp">
+                    <span class="n8n-qp-item"><span class="qk">page</span> = <span class="qv">1</span></span>
+                    <span class="n8n-qp-item"><span class="qk">limit</span> = <span class="qv">5</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl='curl -u mario.rossi@example.com:password123 "{{BASE_URL}}/api/categories/1/products?page=1&limit=5"'><span class="c">curl</span> <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
+            <div class="curl-block" data-curl='curl -X GET -u mario.rossi@example.com:password123 "{{BASE_URL}}/api/categories/1/products?page=1&limit=5"'><span class="c">curl</span> <span class="f">-X GET</span> \
+  <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
   <span class="h">"{{BASE_URL}}/api/categories/1/products?page=1&amp;limit=5"</span></div>
           </div>
         </div>
@@ -341,6 +631,7 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
         <span class="badge badge-auth">Basic Auth</span>
       </div>
 
+      <!-- GET /api/cart -->
       <div class="endpoint">
         <div class="endpoint-row" onclick="toggle(this)">
           <span class="method method-get">GET</span>
@@ -348,13 +639,33 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
           <span class="endpoint-desc">Visualizza il tuo carrello</span>
         </div>
         <div class="endpoint-details">
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">GET</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/cart</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
+              </div>
+            </div>
+          </div>
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl="curl -u mario.rossi@example.com:password123 {{BASE_URL}}/api/cart"><span class="c">curl</span> <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> <span class="h">{{BASE_URL}}/api/cart</span></div>
+            <div class="curl-block" data-curl="curl -X GET -u mario.rossi@example.com:password123 {{BASE_URL}}/api/cart"><span class="c">curl</span> <span class="f">-X GET</span> \
+  <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
+  <span class="h">{{BASE_URL}}/api/cart</span></div>
           </div>
         </div>
       </div>
 
+      <!-- POST /api/cart/items -->
       <div class="endpoint">
         <div class="endpoint-row" onclick="toggle(this)">
           <span class="method method-post">POST</span>
@@ -369,9 +680,41 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
               <tr><td>quantity</td><td>Quantita' (opzionale, default: 1)</td></tr>
             </table>
           </div>
+
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">POST</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/cart/items</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Body Content Type</div>
+                <div class="n8n-value">JSON</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Specify Body</div>
+                <div class="n8n-value">
+                  <span class="muted">Scegli "Using Fields Below" e aggiungi:</span>
+                  <div class="n8n-json"><span class="jk">"productId"</span>: <span class="jn">1</span>
+<span class="jk">"quantity"</span>: <span class="jn">2</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl='curl -X POST -u mario.rossi@example.com:password123 -H "Content-Type: application/json" -d "{\"productId\": 1, \"quantity\": 2}" {{BASE_URL}}/api/cart/items'><span class="c">curl</span> <span class="f">-X POST</span> <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
+            <div class="curl-block" data-curl='curl -X POST -u mario.rossi@example.com:password123 -H "Content-Type: application/json" -d "{\"productId\": 1, \"quantity\": 2}" {{BASE_URL}}/api/cart/items'><span class="c">curl</span> <span class="f">-X POST</span> \
+  <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
   <span class="f">-H</span> <span class="h">"Content-Type: application/json"</span> \
   <span class="f">-d</span> <span class="d">'{"productId": 1, "quantity": 2}'</span> \
   <span class="h">{{BASE_URL}}/api/cart/items</span></div>
@@ -379,6 +722,7 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
         </div>
       </div>
 
+      <!-- PUT /api/cart/items/:productId -->
       <div class="endpoint">
         <div class="endpoint-row" onclick="toggle(this)">
           <span class="method method-put">PUT</span>
@@ -386,9 +730,38 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
           <span class="endpoint-desc">Aggiorna quantita'</span>
         </div>
         <div class="endpoint-details">
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">PUT</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/cart/items/1</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Body Content Type</div>
+                <div class="n8n-value">JSON</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Specify Body</div>
+                <div class="n8n-value">
+                  <span class="muted">Scegli "Using Fields Below" e aggiungi:</span>
+                  <div class="n8n-json"><span class="jk">"quantity"</span>: <span class="jn">5</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl='curl -X PUT -u mario.rossi@example.com:password123 -H "Content-Type: application/json" -d "{\"quantity\": 5}" {{BASE_URL}}/api/cart/items/1'><span class="c">curl</span> <span class="f">-X PUT</span> <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
+            <div class="curl-block" data-curl='curl -X PUT -u mario.rossi@example.com:password123 -H "Content-Type: application/json" -d "{\"quantity\": 5}" {{BASE_URL}}/api/cart/items/1'><span class="c">curl</span> <span class="f">-X PUT</span> \
+  <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
   <span class="f">-H</span> <span class="h">"Content-Type: application/json"</span> \
   <span class="f">-d</span> <span class="d">'{"quantity": 5}'</span> \
   <span class="h">{{BASE_URL}}/api/cart/items/1</span></div>
@@ -396,6 +769,7 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
         </div>
       </div>
 
+      <!-- DELETE /api/cart/items/:productId -->
       <div class="endpoint">
         <div class="endpoint-row" onclick="toggle(this)">
           <span class="method method-delete">DELETE</span>
@@ -403,13 +777,33 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
           <span class="endpoint-desc">Rimuovi prodotto</span>
         </div>
         <div class="endpoint-details">
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">DELETE</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/cart/items/1</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
+              </div>
+            </div>
+          </div>
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl="curl -X DELETE -u mario.rossi@example.com:password123 {{BASE_URL}}/api/cart/items/1"><span class="c">curl</span> <span class="f">-X DELETE</span> <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> <span class="h">{{BASE_URL}}/api/cart/items/1</span></div>
+            <div class="curl-block" data-curl="curl -X DELETE -u mario.rossi@example.com:password123 {{BASE_URL}}/api/cart/items/1"><span class="c">curl</span> <span class="f">-X DELETE</span> \
+  <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
+  <span class="h">{{BASE_URL}}/api/cart/items/1</span></div>
           </div>
         </div>
       </div>
 
+      <!-- DELETE /api/cart -->
       <div class="endpoint">
         <div class="endpoint-row" onclick="toggle(this)">
           <span class="method method-delete">DELETE</span>
@@ -417,9 +811,28 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
           <span class="endpoint-desc">Svuota carrello</span>
         </div>
         <div class="endpoint-details">
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">DELETE</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/cart</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
+              </div>
+            </div>
+          </div>
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl="curl -X DELETE -u mario.rossi@example.com:password123 {{BASE_URL}}/api/cart"><span class="c">curl</span> <span class="f">-X DELETE</span> <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> <span class="h">{{BASE_URL}}/api/cart</span></div>
+            <div class="curl-block" data-curl="curl -X DELETE -u mario.rossi@example.com:password123 {{BASE_URL}}/api/cart"><span class="c">curl</span> <span class="f">-X DELETE</span> \
+  <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
+  <span class="h">{{BASE_URL}}/api/cart</span></div>
           </div>
         </div>
       </div>
@@ -433,6 +846,7 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
         <span class="badge badge-auth">Basic Auth</span>
       </div>
 
+      <!-- POST /api/orders -->
       <div class="endpoint">
         <div class="endpoint-row" onclick="toggle(this)">
           <span class="method method-post">POST</span>
@@ -447,13 +861,76 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
               <tr><td>paymentMethod</td><td>Metodo pagamento (default: credit_card)</td></tr>
             </table>
           </div>
+
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n - Senza indirizzo</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">POST</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/orders</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Body</div>
+                <div class="n8n-value"><span class="muted">Nessun body necessario (usa indirizzo predefinito)</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="n8n-config" style="margin-top: 8px;">
+            <div class="n8n-config-header">Configurazione Nodo n8n - Con indirizzo</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">POST</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/orders</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Body Content Type</div>
+                <div class="n8n-value">JSON</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Specify Body</div>
+                <div class="n8n-value">
+                  <span class="muted">Scegli "Using JSON" e incolla:</span>
+                  <div class="n8n-json">{
+  <span class="jk">"shippingAddress"</span>: {
+    <span class="jk">"street"</span>: <span class="jv">"Via Roma 1"</span>,
+    <span class="jk">"city"</span>: <span class="jv">"Milano"</span>,
+    <span class="jk">"zipcode"</span>: <span class="jv">"20100"</span>,
+    <span class="jk">"country"</span>: <span class="jv">"IT"</span>
+  },
+  <span class="jk">"paymentMethod"</span>: <span class="jv">"credit_card"</span>
+}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl="curl -X POST -u mario.rossi@example.com:password123 {{BASE_URL}}/api/orders"><span class="c">curl</span> <span class="f">-X POST</span> <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> <span class="h">{{BASE_URL}}/api/orders</span></div>
+            <div class="curl-block" data-curl="curl -X POST -u mario.rossi@example.com:password123 {{BASE_URL}}/api/orders"><span class="c">curl</span> <span class="f">-X POST</span> \
+  <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
+  <span class="h">{{BASE_URL}}/api/orders</span></div>
           </div>
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl='curl -X POST -u mario.rossi@example.com:password123 -H "Content-Type: application/json" -d "{\"shippingAddress\": {\"street\": \"Via Roma 1\", \"city\": \"Milano\", \"zipcode\": \"20100\", \"country\": \"IT\"}}" {{BASE_URL}}/api/orders'><span class="c">curl</span> <span class="f">-X POST</span> <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
+            <div class="curl-block" data-curl='curl -X POST -u mario.rossi@example.com:password123 -H "Content-Type: application/json" -d "{\"shippingAddress\": {\"street\": \"Via Roma 1\", \"city\": \"Milano\", \"zipcode\": \"20100\", \"country\": \"IT\"}, \"paymentMethod\": \"credit_card\"}" {{BASE_URL}}/api/orders'><span class="c">curl</span> <span class="f">-X POST</span> \
+  <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
   <span class="f">-H</span> <span class="h">"Content-Type: application/json"</span> \
   <span class="f">-d</span> <span class="d">'{
     "shippingAddress": {
@@ -461,13 +938,15 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
       "city": "Milano",
       "zipcode": "20100",
       "country": "IT"
-    }
+    },
+    "paymentMethod": "credit_card"
   }'</span> \
   <span class="h">{{BASE_URL}}/api/orders</span></div>
           </div>
         </div>
       </div>
 
+      <!-- GET /api/orders -->
       <div class="endpoint">
         <div class="endpoint-row" onclick="toggle(this)">
           <span class="method method-get">GET</span>
@@ -475,13 +954,33 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
           <span class="endpoint-desc">Lista dei tuoi ordini</span>
         </div>
         <div class="endpoint-details">
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">GET</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/orders</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
+              </div>
+            </div>
+          </div>
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl="curl -u mario.rossi@example.com:password123 {{BASE_URL}}/api/orders"><span class="c">curl</span> <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> <span class="h">{{BASE_URL}}/api/orders</span></div>
+            <div class="curl-block" data-curl="curl -X GET -u mario.rossi@example.com:password123 {{BASE_URL}}/api/orders"><span class="c">curl</span> <span class="f">-X GET</span> \
+  <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
+  <span class="h">{{BASE_URL}}/api/orders</span></div>
           </div>
         </div>
       </div>
 
+      <!-- GET /api/orders/:id -->
       <div class="endpoint">
         <div class="endpoint-row" onclick="toggle(this)">
           <span class="method method-get">GET</span>
@@ -489,13 +988,33 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
           <span class="endpoint-desc">Dettaglio ordine</span>
         </div>
         <div class="endpoint-details">
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">GET</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/orders/1</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
+              </div>
+            </div>
+          </div>
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl="curl -u mario.rossi@example.com:password123 {{BASE_URL}}/api/orders/1"><span class="c">curl</span> <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> <span class="h">{{BASE_URL}}/api/orders/1</span></div>
+            <div class="curl-block" data-curl="curl -X GET -u mario.rossi@example.com:password123 {{BASE_URL}}/api/orders/1"><span class="c">curl</span> <span class="f">-X GET</span> \
+  <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
+  <span class="h">{{BASE_URL}}/api/orders/1</span></div>
           </div>
         </div>
       </div>
 
+      <!-- PUT /api/orders/:id/status -->
       <div class="endpoint">
         <div class="endpoint-row" onclick="toggle(this)">
           <span class="method method-put">PUT</span>
@@ -503,9 +1022,46 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
           <span class="endpoint-desc">Aggiorna stato ordine (Admin)</span>
         </div>
         <div class="endpoint-details">
+          <div class="detail-section">
+            <h4>Body (JSON)</h4>
+            <table class="params-table">
+              <tr><td>status</td><td>pending, confirmed, shipped, delivered, cancelled</td></tr>
+            </table>
+          </div>
+
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">PUT</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/orders/1/status</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth <span class="muted">(account Admin)</span></div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Body Content Type</div>
+                <div class="n8n-value">JSON</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Specify Body</div>
+                <div class="n8n-value">
+                  <span class="muted">Scegli "Using Fields Below" e aggiungi:</span>
+                  <div class="n8n-json"><span class="jk">"status"</span>: <span class="jv">"shipped"</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl='curl -X PUT -u admin@fakestoreapi.com:admin123 -H "Content-Type: application/json" -d "{\"status\": \"shipped\"}" {{BASE_URL}}/api/orders/1/status'><span class="c">curl</span> <span class="f">-X PUT</span> <span class="f">-u</span> <span class="u">admin@fakestoreapi.com:admin123</span> \
+            <div class="curl-block" data-curl='curl -X PUT -u admin@fakestoreapi.com:admin123 -H "Content-Type: application/json" -d "{\"status\": \"shipped\"}" {{BASE_URL}}/api/orders/1/status'><span class="c">curl</span> <span class="f">-X PUT</span> \
+  <span class="f">-u</span> <span class="u">admin@fakestoreapi.com:admin123</span> \
   <span class="f">-H</span> <span class="h">"Content-Type: application/json"</span> \
   <span class="f">-d</span> <span class="d">'{"status": "shipped"}'</span> \
   <span class="h">{{BASE_URL}}/api/orders/1/status</span></div>
@@ -513,6 +1069,7 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
         </div>
       </div>
 
+      <!-- DELETE /api/orders/:id -->
       <div class="endpoint">
         <div class="endpoint-row" onclick="toggle(this)">
           <span class="method method-delete">DELETE</span>
@@ -520,9 +1077,28 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
           <span class="endpoint-desc">Cancella ordine (solo se in attesa)</span>
         </div>
         <div class="endpoint-details">
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">DELETE</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/orders/1</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
+              </div>
+            </div>
+          </div>
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl="curl -X DELETE -u mario.rossi@example.com:password123 {{BASE_URL}}/api/orders/1"><span class="c">curl</span> <span class="f">-X DELETE</span> <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> <span class="h">{{BASE_URL}}/api/orders/1</span></div>
+            <div class="curl-block" data-curl="curl -X DELETE -u mario.rossi@example.com:password123 {{BASE_URL}}/api/orders/1"><span class="c">curl</span> <span class="f">-X DELETE</span> \
+  <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
+  <span class="h">{{BASE_URL}}/api/orders/1</span></div>
           </div>
         </div>
       </div>
@@ -536,6 +1112,7 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
         <span class="badge badge-auth">Basic Auth</span>
       </div>
 
+      <!-- GET /api/users/profile -->
       <div class="endpoint">
         <div class="endpoint-row" onclick="toggle(this)">
           <span class="method method-get">GET</span>
@@ -543,13 +1120,33 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
           <span class="endpoint-desc">Visualizza il tuo profilo</span>
         </div>
         <div class="endpoint-details">
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">GET</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/users/profile</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
+              </div>
+            </div>
+          </div>
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl="curl -u mario.rossi@example.com:password123 {{BASE_URL}}/api/users/profile"><span class="c">curl</span> <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> <span class="h">{{BASE_URL}}/api/users/profile</span></div>
+            <div class="curl-block" data-curl="curl -X GET -u mario.rossi@example.com:password123 {{BASE_URL}}/api/users/profile"><span class="c">curl</span> <span class="f">-X GET</span> \
+  <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
+  <span class="h">{{BASE_URL}}/api/users/profile</span></div>
           </div>
         </div>
       </div>
 
+      <!-- PUT /api/users/profile -->
       <div class="endpoint">
         <div class="endpoint-row" onclick="toggle(this)">
           <span class="method method-put">PUT</span>
@@ -557,9 +1154,51 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
           <span class="endpoint-desc">Aggiorna il tuo profilo</span>
         </div>
         <div class="endpoint-details">
+          <div class="detail-section">
+            <h4>Body (JSON)</h4>
+            <table class="params-table">
+              <tr><td>firstName</td><td>Nome</td></tr>
+              <tr><td>lastName</td><td>Cognome</td></tr>
+              <tr><td>phone</td><td>Numero di telefono</td></tr>
+              <tr><td>address</td><td>Oggetto con street, city, zipcode, country</td></tr>
+            </table>
+          </div>
+
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">PUT</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/users/profile</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Body Content Type</div>
+                <div class="n8n-value">JSON</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Specify Body</div>
+                <div class="n8n-value">
+                  <span class="muted">Scegli "Using Fields Below" e aggiungi:</span>
+                  <div class="n8n-json"><span class="jk">"firstName"</span>: <span class="jv">"Mario"</span>
+<span class="jk">"lastName"</span>: <span class="jv">"Rossi"</span>
+<span class="jk">"phone"</span>: <span class="jv">"+39-333-0000000"</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl='curl -X PUT -u mario.rossi@example.com:password123 -H "Content-Type: application/json" -d "{\"firstName\": \"Mario\", \"lastName\": \"Rossi\", \"phone\": \"+39-333-0000000\"}" {{BASE_URL}}/api/users/profile'><span class="c">curl</span> <span class="f">-X PUT</span> <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
+            <div class="curl-block" data-curl='curl -X PUT -u mario.rossi@example.com:password123 -H "Content-Type: application/json" -d "{\"firstName\": \"Mario\", \"lastName\": \"Rossi\", \"phone\": \"+39-333-0000000\"}" {{BASE_URL}}/api/users/profile'><span class="c">curl</span> <span class="f">-X PUT</span> \
+  <span class="f">-u</span> <span class="u">mario.rossi@example.com:password123</span> \
   <span class="f">-H</span> <span class="h">"Content-Type: application/json"</span> \
   <span class="f">-d</span> <span class="d">'{"firstName": "Mario", "lastName": "Rossi", "phone": "+39-333-0000000"}'</span> \
   <span class="h">{{BASE_URL}}/api/users/profile</span></div>
@@ -567,6 +1206,7 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
         </div>
       </div>
 
+      <!-- GET /api/users -->
       <div class="endpoint">
         <div class="endpoint-row" onclick="toggle(this)">
           <span class="method method-get">GET</span>
@@ -574,9 +1214,28 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
           <span class="endpoint-desc">Lista tutti gli utenti (Admin)</span>
         </div>
         <div class="endpoint-details">
+          <div class="n8n-config">
+            <div class="n8n-config-header">Configurazione Nodo n8n</div>
+            <div class="n8n-config-body">
+              <div class="n8n-row">
+                <div class="n8n-label">Method</div>
+                <div class="n8n-value">GET</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">URL</div>
+                <div class="n8n-value">{{BASE_URL}}/api/users</div>
+              </div>
+              <div class="n8n-row">
+                <div class="n8n-label">Authentication</div>
+                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth <span class="muted">(account Admin)</span></div>
+              </div>
+            </div>
+          </div>
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl="curl -u admin@fakestoreapi.com:admin123 {{BASE_URL}}/api/users"><span class="c">curl</span> <span class="f">-u</span> <span class="u">admin@fakestoreapi.com:admin123</span> <span class="h">{{BASE_URL}}/api/users</span></div>
+            <div class="curl-block" data-curl="curl -X GET -u admin@fakestoreapi.com:admin123 {{BASE_URL}}/api/users"><span class="c">curl</span> <span class="f">-X GET</span> \
+  <span class="f">-u</span> <span class="u">admin@fakestoreapi.com:admin123</span> \
+  <span class="h">{{BASE_URL}}/api/users</span></div>
           </div>
         </div>
       </div>
@@ -586,8 +1245,9 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
     <div class="section">
       <div class="section-header">
         <div class="section-icon" style="background:#34d39933;">🔄</div>
-        <h2>Esempio Flusso n8n</h2>
+        <h2>Esempio Flusso n8n Completo</h2>
       </div>
+      <p style="color:#94a3b8; margin-bottom: 16px;">Questo flusso simula un acquisto completo: cerca prodotti, aggiungili al carrello, crea un ordine e verificalo. In n8n, collega 4 nodi HTTP Request in sequenza con la stessa credenziale Basic Auth.</p>
       <div class="flow">
         <div class="flow-step"><div class="flow-step-num">Passo 1</div><div class="flow-step-title">Cerca Prodotti</div><div class="flow-step-detail">GET /api/products?search=cuffie</div></div>
         <div class="flow-arrow">→</div>
