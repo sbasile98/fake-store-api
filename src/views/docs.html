@@ -1265,20 +1265,30 @@
         <div class="section-icon" style="background:#60a5fa33;">📄</div>
         <h2>Formato Risposte</h2>
       </div>
+      <p style="color:#94a3b8; margin-bottom: 16px;">Le liste (prodotti, categorie, ordini, utenti) restituiscono direttamente un <strong style="color:#e2e8f0;">array JSON</strong> — in n8n ogni elemento diventa automaticamente un record separato, senza bisogno del nodo Split. La paginazione e' negli header HTTP (X-Total-Count, X-Page, X-Per-Page, X-Total-Pages).</p>
       <div class="response-grid">
         <div class="response-card response-success">
-          <div class="response-card-header">Successo</div>
-          <pre>{
-  "success": true,
-  "data": { ... },
-  "pagination": {
-    "page": 1,
-    "limit": 10,
-    "total": 50,
-    "totalPages": 5
+          <div class="response-card-header">Lista (array diretto)</div>
+          <pre>[
+  {
+    "id": 1,
+    "title": "Cuffie Bluetooth",
+    "price": 149.99,
+    ...
   },
-  "message": "Operazione completata."
-}</pre>
+  {
+    "id": 2,
+    "title": "Smart TV 4K",
+    "price": 599.99,
+    ...
+  }
+]
+
+<span style="color:#64748b">Header paginazione:
+  X-Total-Count: 50
+  X-Page: 1
+  X-Per-Page: 10
+  X-Total-Pages: 5</span></pre>
         </div>
         <div class="response-card response-error">
           <div class="response-card-header">Errore</div>

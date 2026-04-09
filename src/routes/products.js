@@ -12,16 +12,14 @@ router.get('/', (req, res) => {
     page, limit, offset, category, search, minPrice, maxPrice, sort
   });
 
-  res.json({
-    success: true,
-    data: products,
-    pagination: {
-      page,
-      limit,
-      total,
-      totalPages: Math.ceil(total / limit)
-    }
+  res.set({
+    'X-Total-Count': total,
+    'X-Page': page,
+    'X-Per-Page': limit,
+    'X-Total-Pages': Math.ceil(total / limit)
   });
+
+  res.json(products);
 });
 
 // GET /api/products/all - Tutti i prodotti senza paginazione
@@ -30,11 +28,8 @@ router.get('/all', (req, res) => {
     page: 1, limit: 1000, offset: 0
   });
 
-  res.json({
-    success: true,
-    data: products,
-    total
-  });
+  res.set('X-Total-Count', total);
+  res.json(products);
 });
 
 // GET /api/products/:id
@@ -48,7 +43,7 @@ router.get('/:id', (req, res) => {
     });
   }
 
-  res.json({ success: true, data: product });
+  res.json(product);
 });
 
 // POST /api/products (Admin only)
@@ -64,11 +59,7 @@ router.post('/', adminOnly, (req, res) => {
 
   const product = Product.create({ title, description, price, discountPrice, stock, sku, categoryId, image, images, brand });
 
-  res.status(201).json({
-    success: true,
-    data: product,
-    message: 'Prodotto creato con successo.'
-  });
+  res.status(201).json(product);
 });
 
 // PUT /api/products/:id (Admin only)
@@ -82,11 +73,7 @@ router.put('/:id', adminOnly, (req, res) => {
   }
 
   const product = Product.update(req.params.id, req.body);
-  res.json({
-    success: true,
-    data: product,
-    message: 'Prodotto aggiornato con successo.'
-  });
+  res.json(product);
 });
 
 // DELETE /api/products/:id (Admin only)
@@ -100,10 +87,7 @@ router.delete('/:id', adminOnly, (req, res) => {
   }
 
   Product.delete(req.params.id);
-  res.json({
-    success: true,
-    message: 'Prodotto eliminato con successo.'
-  });
+  res.json({ message: 'Prodotto eliminato con successo.' });
 });
 
 module.exports = router;

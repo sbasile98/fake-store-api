@@ -10,7 +10,7 @@ router.get('/profile', (req, res) => {
     user.address = JSON.parse(user.address);
   }
 
-  res.json({ success: true, data: user });
+  res.json(user);
 });
 
 // PUT /api/users/profile
@@ -22,11 +22,7 @@ router.put('/profile', (req, res) => {
     user.address = JSON.parse(user.address);
   }
 
-  res.json({
-    success: true,
-    data: user,
-    message: 'Profilo aggiornato con successo.'
-  });
+  res.json(user);
 });
 
 // GET /api/users (Solo Admin)
@@ -37,7 +33,7 @@ router.get('/', adminOnly, (req, res) => {
     if (user.address) user.address = JSON.parse(user.address);
   }
 
-  res.json({ success: true, data: users });
+  res.json(users);
 });
 
 module.exports = router;

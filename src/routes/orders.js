@@ -29,11 +29,7 @@ router.post('/', (req, res) => {
   // Svuota il carrello dopo l'ordine
   Cart.clearCart(req.user.id);
 
-  res.status(201).json({
-    success: true,
-    data: order,
-    message: 'Ordine effettuato con successo.'
-  });
+  res.status(201).json(order);
 });
 
 // GET /api/orders - Lista ordini dell'utente
@@ -41,16 +37,14 @@ router.get('/', (req, res) => {
   const { page, limit, offset } = paginate(req.query);
   const { orders, total } = Order.findByUserId(req.user.id, { page, limit, offset });
 
-  res.json({
-    success: true,
-    data: orders,
-    pagination: {
-      page,
-      limit,
-      total,
-      totalPages: Math.ceil(total / limit)
-    }
+  res.set({
+    'X-Total-Count': total,
+    'X-Page': page,
+    'X-Per-Page': limit,
+    'X-Total-Pages': Math.ceil(total / limit)
   });
+
+  res.json(orders);
 });
 
 // GET /api/orders/:id - Dettaglio ordine
@@ -71,7 +65,7 @@ router.get('/:id', (req, res) => {
     });
   }
 
-  res.json({ success: true, data: order });
+  res.json(order);
 });
 
 // PUT /api/orders/:id/status - Aggiorna stato ordine (Solo Admin)
@@ -95,11 +89,7 @@ router.put('/:id/status', adminOnly, (req, res) => {
   }
 
   const updated = Order.updateStatus(req.params.id, status);
-  res.json({
-    success: true,
-    data: updated,
-    message: `Stato dell'ordine aggiornato a "${status}".`
-  });
+  res.json(updated);
 });
 
 // DELETE /api/orders/:id - Cancella ordine
@@ -128,11 +118,7 @@ router.delete('/:id', (req, res) => {
   }
 
   const updated = Order.updateStatus(req.params.id, 'cancelled');
-  res.json({
-    success: true,
-    data: updated,
-    message: 'Ordine cancellato con successo.'
-  });
+  res.json(updated);
 });
 
 module.exports = router;

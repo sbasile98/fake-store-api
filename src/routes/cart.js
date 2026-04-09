@@ -5,7 +5,7 @@ const Product = require('../models/product');
 // GET /api/cart
 router.get('/', (req, res) => {
   const cart = Cart.getCartWithItems(req.user.id);
-  res.json({ success: true, data: cart });
+  res.json(cart);
 });
 
 // POST /api/cart/items
@@ -28,11 +28,7 @@ router.post('/items', (req, res) => {
   }
 
   const cart = Cart.addItem(req.user.id, productId, quantity || 1);
-  res.json({
-    success: true,
-    data: cart,
-    message: `${product.title} aggiunto al carrello.`
-  });
+  res.json(cart);
 });
 
 // PUT /api/cart/items/:productId
@@ -55,31 +51,19 @@ router.put('/items/:productId', (req, res) => {
   }
 
   const cart = Cart.updateItemQuantity(req.user.id, parseInt(req.params.productId), quantity);
-  res.json({
-    success: true,
-    data: cart,
-    message: 'Carrello aggiornato.'
-  });
+  res.json(cart);
 });
 
 // DELETE /api/cart/items/:productId
 router.delete('/items/:productId', (req, res) => {
   const cart = Cart.removeItem(req.user.id, parseInt(req.params.productId));
-  res.json({
-    success: true,
-    data: cart,
-    message: 'Prodotto rimosso dal carrello.'
-  });
+  res.json(cart);
 });
 
 // DELETE /api/cart
 router.delete('/', (req, res) => {
   const cart = Cart.clearCart(req.user.id);
-  res.json({
-    success: true,
-    data: cart,
-    message: 'Carrello svuotato.'
-  });
+  res.json(cart);
 });
 
 module.exports = router;

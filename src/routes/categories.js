@@ -6,7 +6,7 @@ const { paginate } = require('../utils/helpers');
 // GET /api/categories
 router.get('/', (req, res) => {
   const categories = Category.findAll();
-  res.json({ success: true, data: categories });
+  res.json(categories);
 });
 
 // GET /api/categories/:id/products
@@ -26,17 +26,14 @@ router.get('/:id/products', (req, res) => {
     page, limit, offset, category: req.params.id, sort
   });
 
-  res.json({
-    success: true,
-    data: products,
-    category,
-    pagination: {
-      page,
-      limit,
-      total,
-      totalPages: Math.ceil(total / limit)
-    }
+  res.set({
+    'X-Total-Count': total,
+    'X-Page': page,
+    'X-Per-Page': limit,
+    'X-Total-Pages': Math.ceil(total / limit)
   });
+
+  res.json(products);
 });
 
 module.exports = router;
