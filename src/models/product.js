@@ -1,12 +1,5 @@
 const db = require('../config/database');
 
-function generateId() {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  let id = '';
-  for (let i = 0; i < 6; i++) id += chars[Math.floor(Math.random() * chars.length)];
-  return id;
-}
-
 const Product = {
   findAll({ page = 1, limit = 10, offset = 0, category, search, minPrice, maxPrice, sort } = {}) {
     let where = [];
@@ -53,54 +46,40 @@ const Product = {
        LIMIT ? OFFSET ?`
     ).all(...params, limit, offset);
 
-    // Parse images JSON
-    for (const p of products) {
-      if (p.images) p.images = JSON.parse(p.images);
-    }
-
     return { products, total: countRow.total };
   },
 
   findById(id) {
-    const product = db.prepare(
+    return db.prepare(
       `SELECT p.*, c.name as categoryName, c.slug as categorySlug
        FROM products p
        LEFT JOIN categories c ON p.categoryId = c.id
        WHERE p.id = ?`
     ).get(id);
-
-    if (product && product.images) {
-      product.images = JSON.parse(product.images);
-    }
-    return product;
   },
 
   create(data) {
-    let id = generateId();
-    while (db.prepare('SELECT 1 FROM products WHERE id = ?').get(id)) {
-      id = generateId();
-    }
-    db.prepare(
-      `INSERT INTO products (id, title, description, price, warrantyMonths, returnDays, stock, sku, categoryId, image, images, rating, ratingCount, brand)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    const result = db.prepare(
+      `INSERT INTO products (sku, title, description, price, warrantyMonths, returnDays, stock, categoryId, rating, ratingCount, brand)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
     ).run(
-      id, data.title, data.description, data.price, data.warrantyMonths || 0,
-      data.returnDays || 0, data.stock || 100, data.sku, data.categoryId, data.image,
-      data.images ? JSON.stringify(data.images) : null,
+      data.sku, data.title, data.description, data.price,
+      data.warrantyMonths || 0, data.returnDays || 0,
+      data.stock || 100, data.categoryId,
       data.rating || 0, data.ratingCount || 0, data.brand || null
     );
-    return Product.findById(id);
+    return Product.findById(result.lastInsertRowid);
   },
 
   update(id, data) {
-    const allowed = ['title', 'description', 'price', 'warrantyMonths', 'returnDays', 'stock', 'categoryId', 'image', 'images', 'brand'];
+    const allowed = ['sku', 'title', 'description', 'price', 'warrantyMonths', 'returnDays', 'stock', 'categoryId', 'brand'];
     const updates = [];
     const values = [];
 
     for (const key of allowed) {
       if (data[key] !== undefined) {
         updates.push(`${key} = ?`);
-        values.push(key === 'images' ? JSON.stringify(data[key]) : data[key]);
+        values.push(data[key]);
       }
     }
 

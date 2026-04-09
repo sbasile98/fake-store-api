@@ -380,7 +380,6 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
               <tr><td>price</td><td>Prezzo (obbligatorio)</td></tr>
               <tr><td>sku</td><td>Codice SKU univoco (obbligatorio)</td></tr>
               <tr><td>categoryId</td><td>ID categoria (obbligatorio)</td></tr>
-              <tr><td>image</td><td>URL immagine (obbligatorio)</td></tr>
               <tr><td>brand</td><td>Marca (opzionale)</td></tr>
               <tr><td>warrantyMonths</td><td>Mesi di garanzia (opzionale, default 0)</td></tr>
               <tr><td>returnDays</td><td>Giorni per richiesta reso (opzionale, default 0)</td></tr>
@@ -416,7 +415,6 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
 <span class="jk">"price"</span>: <span class="jn">49.99</span>
 <span class="jk">"sku"</span>: <span class="jv">"NEW-0001"</span>
 <span class="jk">"categoryId"</span>: <span class="jn">1</span>
-<span class="jk">"image"</span>: <span class="jv">"https://picsum.photos/400/400"</span>
 <span class="jk">"brand"</span>: <span class="jv">"MioMarchio"</span></div>
                 </div>
               </div>
@@ -425,7 +423,7 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
 
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl='curl -X POST -u admin@fakestoreapi.com:admin123 -H "Content-Type: application/json" -d "{\"title\": \"Nuovo Prodotto\", \"description\": \"Descrizione del prodotto\", \"price\": 49.99, \"sku\": \"NEW-0001\", \"categoryId\": 1, \"image\": \"https://picsum.photos/400/400\", \"brand\": \"MioMarchio\"}" {{BASE_URL}}/api/products'><span class="c">curl</span> <span class="f">-X POST</span> \
+            <div class="curl-block" data-curl='curl -X POST -u admin@fakestoreapi.com:admin123 -H "Content-Type: application/json" -d "{\"title\": \"Nuovo Prodotto\", \"description\": \"Descrizione del prodotto\", \"price\": 49.99, \"sku\": \"NEW-0001\", \"categoryId\": 1, \"brand\": \"MioMarchio\"}" {{BASE_URL}}/api/products'><span class="c">curl</span> <span class="f">-X POST</span> \
   <span class="f">-u</span> <span class="u">admin@fakestoreapi.com:admin123</span> \
   <span class="f">-H</span> <span class="h">"Content-Type: application/json"</span> \
   <span class="f">-d</span> <span class="d">'{
@@ -434,7 +432,6 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
     "price": 49.99,
     "sku": "NEW-0001",
     "categoryId": 1,
-    "image": "https://picsum.photos/400/400",
     "brand": "MioMarchio"
   }'</span> \
   <span class="h">{{BASE_URL}}/api/products</span></div>

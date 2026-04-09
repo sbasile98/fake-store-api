@@ -48,16 +48,16 @@ router.get('/:id', (req, res) => {
 
 // POST /api/products (Admin only)
 router.post('/', adminOnly, (req, res) => {
-  const { title, description, price, warrantyMonths, returnDays, stock, sku, categoryId, image, images, brand } = req.body;
+  const { title, description, price, warrantyMonths, returnDays, stock, sku, categoryId, brand } = req.body;
 
-  if (!title || !description || !price || !sku || !categoryId || !image) {
+  if (!title || !description || !price || !sku || !categoryId) {
     return res.status(400).json({
       success: false,
-      error: 'I campi title, description, price, sku, categoryId e image sono obbligatori.'
+      error: 'I campi title, description, price, sku e categoryId sono obbligatori.'
     });
   }
 
-  const product = Product.create({ title, description, price, warrantyMonths, returnDays, stock, sku, categoryId, image, images, brand });
+  const product = Product.create({ title, description, price, warrantyMonths, returnDays, stock, sku, categoryId, brand });
 
   res.status(201).json(product);
 });

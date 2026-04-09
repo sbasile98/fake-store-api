@@ -14,7 +14,7 @@ const Cart = {
     const cart = Cart.getOrCreateCart(userId);
 
     const items = db.prepare(
-      `SELECT ci.id, ci.quantity, p.id as productId, p.title, p.price, p.image, p.stock
+      `SELECT ci.id, ci.quantity, p.id as productId, p.title, p.price, p.stock
        FROM cart_items ci
        JOIN products p ON ci.productId = p.id
        WHERE ci.cartId = ?`

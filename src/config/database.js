@@ -30,21 +30,19 @@ db.exec(`
   );
 
   CREATE TABLE IF NOT EXISTS products (
-    id            TEXT PRIMARY KEY,
-    title         TEXT NOT NULL,
-    description   TEXT NOT NULL,
-    price         REAL NOT NULL,
-    warrantyMonths INTEGER DEFAULT 0,
-    returnDays     INTEGER DEFAULT 0,
-    stock         INTEGER DEFAULT 100,
-    sku           TEXT UNIQUE NOT NULL,
-    categoryId    INTEGER NOT NULL,
-    image         TEXT NOT NULL,
-    images        TEXT,
-    rating        REAL DEFAULT 0,
-    ratingCount   INTEGER DEFAULT 0,
-    brand         TEXT,
-    createdAt     TEXT DEFAULT (datetime('now')),
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    sku             TEXT UNIQUE NOT NULL,
+    title           TEXT NOT NULL,
+    description     TEXT NOT NULL,
+    price           REAL NOT NULL,
+    warrantyMonths  INTEGER DEFAULT 0,
+    returnDays      INTEGER DEFAULT 0,
+    stock           INTEGER DEFAULT 100,
+    categoryId      INTEGER NOT NULL,
+    rating          REAL DEFAULT 0,
+    ratingCount     INTEGER DEFAULT 0,
+    brand           TEXT,
+    createdAt       TEXT DEFAULT (datetime('now')),
     FOREIGN KEY (categoryId) REFERENCES categories(id)
   );
 
@@ -59,7 +57,7 @@ db.exec(`
   CREATE TABLE IF NOT EXISTS cart_items (
     id        INTEGER PRIMARY KEY AUTOINCREMENT,
     cartId    INTEGER NOT NULL,
-    productId TEXT NOT NULL,
+    productId INTEGER NOT NULL,
     quantity  INTEGER DEFAULT 1,
     FOREIGN KEY (cartId) REFERENCES carts(id) ON DELETE CASCADE,
     FOREIGN KEY (productId) REFERENCES products(id),
@@ -81,7 +79,7 @@ db.exec(`
   CREATE TABLE IF NOT EXISTS order_items (
     id        INTEGER PRIMARY KEY AUTOINCREMENT,
     orderId   INTEGER NOT NULL,
-    productId TEXT NOT NULL,
+    productId INTEGER NOT NULL,
     quantity  INTEGER NOT NULL,
     price     REAL NOT NULL,
     FOREIGN KEY (orderId) REFERENCES orders(id) ON DELETE CASCADE,

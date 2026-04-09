@@ -62,44 +62,25 @@ const products = [
   { title: 'Set Pennelli Trucco', description: 'Set professionale di 12 pennelli trucco con setole sintetiche, manici in bambu\' e custodia arrotolabile in pelle. Per fondotinta, cipria, contouring e occhi.', price: 29.99, sku: 'BELL-6008', categoryId: 6, brand: 'BeautyTools', rating: 4.5, ratingCount: 345 }
 ];
 
-function generateId() {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  let id = '';
-  for (let i = 0; i < 6; i++) id += chars[Math.floor(Math.random() * chars.length)];
-  return id;
-}
-
 function seedProducts(db) {
-  const usedIds = new Set();
   // Garanzia: 1=Elettronica 24m, 4=Casa e Cucina 12m, resto 0
   const warrantyByCategory = { 1: 24, 4: 12 };
   // Reso: 1=Elettronica 30gg, 2=Abbigliamento 14gg, 3=Libri 7gg, 4=Casa e Cucina 14gg, 5=Sport e Outdoor 14gg, 6=Bellezza 7gg
   const returnByCategory = { 1: 30, 2: 14, 3: 7, 4: 14, 5: 14, 6: 7 };
 
   const insert = db.prepare(
-    `INSERT INTO products (id, title, description, price, warrantyMonths, returnDays, stock, sku, categoryId, image, images, rating, ratingCount, brand)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    `INSERT INTO products (sku, title, description, price, warrantyMonths, returnDays, stock, categoryId, rating, ratingCount, brand)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
   );
 
   for (const p of products) {
-    let id = generateId();
-    while (usedIds.has(id)) id = generateId();
-    usedIds.add(id);
-
     const stock = Math.floor(Math.random() * 200) + 10;
-    const image = `https://picsum.photos/seed/${p.sku}/400/400`;
-    const images = JSON.stringify([
-      `https://picsum.photos/seed/${p.sku}-1/400/400`,
-      `https://picsum.photos/seed/${p.sku}-2/400/400`,
-      `https://picsum.photos/seed/${p.sku}-3/400/400`
-    ]);
-
     const warrantyMonths = warrantyByCategory[p.categoryId] || 0;
     const returnDays = returnByCategory[p.categoryId] || 0;
 
     insert.run(
-      id, p.title, p.description, p.price, warrantyMonths, returnDays,
-      stock, p.sku, p.categoryId, image, images,
+      p.sku, p.title, p.description, p.price, warrantyMonths, returnDays,
+      stock, p.categoryId,
       p.rating, p.ratingCount, p.brand
     );
   }

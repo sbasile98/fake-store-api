@@ -36,7 +36,7 @@ const Order = {
     for (const order of orders) {
       if (order.shippingAddress) order.shippingAddress = JSON.parse(order.shippingAddress);
       order.items = db.prepare(
-        `SELECT oi.*, p.title, p.image FROM order_items oi
+        `SELECT oi.*, p.title, p.sku FROM order_items oi
          JOIN products p ON oi.productId = p.id
          WHERE oi.orderId = ?`
       ).all(order.id);
@@ -52,7 +52,7 @@ const Order = {
     if (order.shippingAddress) order.shippingAddress = JSON.parse(order.shippingAddress);
 
     order.items = db.prepare(
-      `SELECT oi.*, p.title, p.image, p.sku FROM order_items oi
+      `SELECT oi.*, p.title, p.sku FROM order_items oi
        JOIN products p ON oi.productId = p.id
        WHERE oi.orderId = ?`
     ).all(order.id);
