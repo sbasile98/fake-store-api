@@ -157,7 +157,7 @@
 
   <div class="hero">
     <h1>Fake Store API</h1>
-    <p>API e-commerce per il corso di formazione n8n. Simula un negozio online con autenticazione Basic Auth.</p>
+    <p>API e-commerce realistica con autenticazione Basic Auth. Array JSON direttamente splittabili, paginazione negli header.</p>
     <div class="base-url">{{BASE_URL}}/api</div>
   </div>
 
@@ -189,38 +189,32 @@
         </div>
       </div>
       <div class="quick-card">
-        <h3>Configurazione n8n</h3>
-        <div class="code-block"><span class="comment"># 1. Crea una credenziale Basic Auth in n8n:</span>
-<span class="comment">#    Credentials > New > HTTP Basic Auth</span>
-<span class="comment">#    User: mario.rossi@example.com</span>
-<span class="comment">#    Password: password123</span>
+        <h3>Avvio Rapido</h3>
+        <div class="code-block"><span class="comment"># Prova subito con curl</span>
+curl <span class="string">-u mario.rossi@example.com:password123</span> \
+  {{BASE_URL}}/api/products
 
-<span class="comment"># 2. Nel nodo HTTP Request:</span>
-<span class="comment">#    Authentication > Predefined Credential Type</span>
-<span class="comment">#    Credential Type > HTTP Basic Auth</span>
-<span class="comment">#    Seleziona la credenziale creata</span>
-
-<span class="comment"># 3. Compila Method, URL, parametri e body</span>
-<span class="comment">#    come indicato per ogni endpoint qui sotto</span></div>
+<span class="comment"># O con un HTTP client:</span>
+<span class="comment">#   Authorization: Basic Auth</span>
+<span class="comment">#   User: mario.rossi@example.com</span>
+<span class="comment">#   Password: password123</span></div>
       </div>
     </div>
 
     <!-- AUTH -->
     <div class="auth-box">
       <h2>Autenticazione Basic Auth</h2>
-      <p>Tutte le chiamate API richiedono autenticazione con email e password.</p>
+      <p>Tutte le chiamate API richiedono autenticazione con email e password. Usa uno qualsiasi tra i 5 account di test sopra.</p>
       <div class="auth-header-example">
-        <span>Header:</span> <code>Authorization: Basic base64(email:password)</code>
+        <span>Header HTTP:</span> <code>Authorization: Basic base64(email:password)</code>
       </div>
       <div class="auth-n8n">
-        <strong>Come configurare in n8n (HTTP Request Node):</strong>
+        <strong>Esempi:</strong>
         <ol>
-          <li>Vai su <strong>Authentication</strong> > scegli <strong>Predefined Credential Type</strong></li>
-          <li>In <strong>Credential Type</strong> seleziona <strong>HTTP Basic Auth</strong></li>
-          <li>Clicca su <strong>Create New Credential</strong> e inserisci:<br>
-            &nbsp;&nbsp;&nbsp;User: <code style="color:#34d399">mario.rossi@example.com</code><br>
-            &nbsp;&nbsp;&nbsp;Password: <code style="color:#34d399">password123</code></li>
-          <li>La credenziale viene riutilizzata su tutti i nodi HTTP Request</li>
+          <li><strong>curl:</strong> <code style="color:#34d399">curl -u mario.rossi@example.com:password123 {{BASE_URL}}/api/products</code></li>
+          <li><strong>JavaScript/Node:</strong> Usa header <code style="color:#34d399">Authorization: Basic ...</code> oppure librerie come axios con auth config</li>
+          <li><strong>Postman/Insomnia:</strong> Imposta Authentication Type su "Basic Auth" con le credenziali</li>
+          <li><strong>Python/PHP/Java:</strong> Encoda email:password in Base64 e passa nell'header Authorization</li>
         </ol>
       </div>
     </div>
@@ -255,36 +249,6 @@
             </table>
           </div>
 
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">GET</div>
-              </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/products</div>
-              </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
-              </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Send Query Params</div>
-                <div class="n8n-value">
-                  <span class="muted">Attiva "Send Query Parameters" e aggiungi:</span>
-                  <div class="n8n-qp">
-                    <span class="n8n-qp-item"><span class="qk">search</span> = <span class="qv">cuffie</span></span>
-                    <span class="n8n-qp-item"><span class="qk">minPrice</span> = <span class="qv">50</span></span>
-                    <span class="n8n-qp-item"><span class="qk">maxPrice</span> = <span class="qv">200</span></span>
-                    <span class="n8n-qp-item"><span class="qk">sort</span> = <span class="qv">price_asc</span></span>
-                    <span class="n8n-qp-item"><span class="qk">limit</span> = <span class="qv">5</span></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
@@ -309,20 +273,8 @@
           <span class="endpoint-desc">Tutti i prodotti (senza paginazione)</span>
         </div>
         <div class="endpoint-details">
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">GET</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/products/all</div>
-              </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
               </div>
             </div>
           </div>
@@ -343,20 +295,8 @@
           <span class="endpoint-desc">Dettaglio prodotto</span>
         </div>
         <div class="endpoint-details">
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">GET</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/products/1</div>
-              </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
               </div>
             </div>
           </div>
@@ -392,37 +332,11 @@
             </table>
           </div>
 
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">POST</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/products</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth <span class="muted">(account Admin)</span></div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Body Content Type</div>
-                <div class="n8n-value">JSON</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Specify Body</div>
-                <div class="n8n-value">
-                  <span class="muted">Scegli "Using Fields Below" e aggiungi:</span>
-                  <div class="n8n-json"><span class="jk">"title"</span>: <span class="jv">"Nuovo Prodotto"</span>
-<span class="jk">"description"</span>: <span class="jv">"Descrizione del prodotto"</span>
-<span class="jk">"price"</span>: <span class="jn">49.99</span>
-<span class="jk">"sku"</span>: <span class="jv">"NEW-0001"</span>
-<span class="jk">"categoryId"</span>: <span class="jn">1</span>
-<span class="jk">"image"</span>: <span class="jv">"https://picsum.photos/400/400"</span>
-<span class="jk">"brand"</span>: <span class="jv">"MioMarchio"</span></div>
-                </div>
               </div>
             </div>
           </div>
@@ -454,32 +368,11 @@
           <span class="endpoint-desc">Aggiorna prodotto (Admin)</span>
         </div>
         <div class="endpoint-details">
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">PUT</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/products/1</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth <span class="muted">(account Admin)</span></div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Body Content Type</div>
-                <div class="n8n-value">JSON</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Specify Body</div>
-                <div class="n8n-value">
-                  <span class="muted">Scegli "Using Fields Below" e aggiungi:</span>
-                  <div class="n8n-json"><span class="jk">"price"</span>: <span class="jn">129.99</span>
-<span class="jk">"discountPrice"</span>: <span class="jn">99.99</span></div>
-                </div>
               </div>
             </div>
           </div>
@@ -502,20 +395,8 @@
           <span class="endpoint-desc">Elimina prodotto (Admin)</span>
         </div>
         <div class="endpoint-details">
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">DELETE</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/products/1</div>
-              </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth <span class="muted">(account Admin)</span></div>
               </div>
             </div>
           </div>
@@ -544,20 +425,8 @@
           <span class="endpoint-desc">Lista tutte le categorie</span>
         </div>
         <div class="endpoint-details">
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">GET</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/categories</div>
-              </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
               </div>
             </div>
           </div>
@@ -577,30 +446,10 @@
           <span class="endpoint-desc">Prodotti per categoria</span>
         </div>
         <div class="endpoint-details">
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">GET</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/categories/1/products</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Send Query Params</div>
-                <div class="n8n-value">
-                  <span class="muted">Opzionale - Attiva "Send Query Parameters":</span>
-                  <div class="n8n-qp">
-                    <span class="n8n-qp-item"><span class="qk">page</span> = <span class="qv">1</span></span>
-                    <span class="n8n-qp-item"><span class="qk">limit</span> = <span class="qv">5</span></span>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -639,20 +488,8 @@
           <span class="endpoint-desc">Visualizza il tuo carrello</span>
         </div>
         <div class="endpoint-details">
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">GET</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/cart</div>
-              </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
               </div>
             </div>
           </div>
@@ -681,32 +518,11 @@
             </table>
           </div>
 
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">POST</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/cart/items</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Body Content Type</div>
-                <div class="n8n-value">JSON</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Specify Body</div>
-                <div class="n8n-value">
-                  <span class="muted">Scegli "Using Fields Below" e aggiungi:</span>
-                  <div class="n8n-json"><span class="jk">"productId"</span>: <span class="jn">1</span>
-<span class="jk">"quantity"</span>: <span class="jn">2</span></div>
-                </div>
               </div>
             </div>
           </div>
@@ -730,31 +546,11 @@
           <span class="endpoint-desc">Aggiorna quantita'</span>
         </div>
         <div class="endpoint-details">
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">PUT</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/cart/items/1</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Body Content Type</div>
-                <div class="n8n-value">JSON</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Specify Body</div>
-                <div class="n8n-value">
-                  <span class="muted">Scegli "Using Fields Below" e aggiungi:</span>
-                  <div class="n8n-json"><span class="jk">"quantity"</span>: <span class="jn">5</span></div>
-                </div>
               </div>
             </div>
           </div>
@@ -777,20 +573,8 @@
           <span class="endpoint-desc">Rimuovi prodotto</span>
         </div>
         <div class="endpoint-details">
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">DELETE</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/cart/items/1</div>
-              </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
               </div>
             </div>
           </div>
@@ -811,20 +595,8 @@
           <span class="endpoint-desc">Svuota carrello</span>
         </div>
         <div class="endpoint-details">
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">DELETE</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/cart</div>
-              </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
               </div>
             </div>
           </div>
@@ -862,61 +634,18 @@
             </table>
           </div>
 
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n - Senza indirizzo</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">POST</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/orders</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
-              </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Body</div>
-                <div class="n8n-value"><span class="muted">Nessun body necessario (usa indirizzo predefinito)</span></div>
               </div>
             </div>
           </div>
 
-          <div class="n8n-config" style="margin-top: 8px;">
-            <div class="n8n-config-header">Configurazione Nodo n8n - Con indirizzo</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">POST</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/orders</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Body Content Type</div>
-                <div class="n8n-value">JSON</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Specify Body</div>
-                <div class="n8n-value">
-                  <span class="muted">Scegli "Using JSON" e incolla:</span>
-                  <div class="n8n-json">{
-  <span class="jk">"shippingAddress"</span>: {
-    <span class="jk">"street"</span>: <span class="jv">"Via Roma 1"</span>,
-    <span class="jk">"city"</span>: <span class="jv">"Milano"</span>,
-    <span class="jk">"zipcode"</span>: <span class="jv">"20100"</span>,
-    <span class="jk">"country"</span>: <span class="jv">"IT"</span>
-  },
-  <span class="jk">"paymentMethod"</span>: <span class="jv">"credit_card"</span>
-}</div>
-                </div>
               </div>
             </div>
           </div>
@@ -954,20 +683,8 @@
           <span class="endpoint-desc">Lista dei tuoi ordini</span>
         </div>
         <div class="endpoint-details">
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">GET</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/orders</div>
-              </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
               </div>
             </div>
           </div>
@@ -988,20 +705,8 @@
           <span class="endpoint-desc">Dettaglio ordine</span>
         </div>
         <div class="endpoint-details">
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">GET</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/orders/1</div>
-              </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
               </div>
             </div>
           </div>
@@ -1029,31 +734,11 @@
             </table>
           </div>
 
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">PUT</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/orders/1/status</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth <span class="muted">(account Admin)</span></div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Body Content Type</div>
-                <div class="n8n-value">JSON</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Specify Body</div>
-                <div class="n8n-value">
-                  <span class="muted">Scegli "Using Fields Below" e aggiungi:</span>
-                  <div class="n8n-json"><span class="jk">"status"</span>: <span class="jv">"shipped"</span></div>
-                </div>
               </div>
             </div>
           </div>
@@ -1077,20 +762,8 @@
           <span class="endpoint-desc">Cancella ordine (solo se in attesa)</span>
         </div>
         <div class="endpoint-details">
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">DELETE</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/orders/1</div>
-              </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
               </div>
             </div>
           </div>
@@ -1120,20 +793,8 @@
           <span class="endpoint-desc">Visualizza il tuo profilo</span>
         </div>
         <div class="endpoint-details">
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">GET</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/users/profile</div>
-              </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
               </div>
             </div>
           </div>
@@ -1164,33 +825,11 @@
             </table>
           </div>
 
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">PUT</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/users/profile</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Body Content Type</div>
-                <div class="n8n-value">JSON</div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Specify Body</div>
-                <div class="n8n-value">
-                  <span class="muted">Scegli "Using Fields Below" e aggiungi:</span>
-                  <div class="n8n-json"><span class="jk">"firstName"</span>: <span class="jv">"Mario"</span>
-<span class="jk">"lastName"</span>: <span class="jv">"Rossi"</span>
-<span class="jk">"phone"</span>: <span class="jv">"+39-333-0000000"</span></div>
-                </div>
               </div>
             </div>
           </div>
@@ -1214,20 +853,8 @@
           <span class="endpoint-desc">Lista tutti gli utenti (Admin)</span>
         </div>
         <div class="endpoint-details">
-          <div class="n8n-config">
-            <div class="n8n-config-header">Configurazione Nodo n8n</div>
-            <div class="n8n-config-body">
-              <div class="n8n-row">
-                <div class="n8n-label">Method</div>
-                <div class="n8n-value">GET</div>
+          </div>
               </div>
-              <div class="n8n-row">
-                <div class="n8n-label">URL</div>
-                <div class="n8n-value">{{BASE_URL}}/api/users</div>
-              </div>
-              <div class="n8n-row">
-                <div class="n8n-label">Authentication</div>
-                <div class="n8n-value">Predefined Credential Type > HTTP Basic Auth <span class="muted">(account Admin)</span></div>
               </div>
             </div>
           </div>
@@ -1245,9 +872,9 @@
     <div class="section">
       <div class="section-header">
         <div class="section-icon" style="background:#34d39933;">🔄</div>
-        <h2>Esempio Flusso n8n Completo</h2>
+        <h2>Esempio Flusso Completo</h2>
       </div>
-      <p style="color:#94a3b8; margin-bottom: 16px;">Questo flusso simula un acquisto completo: cerca prodotti, aggiungili al carrello, crea un ordine e verificalo. In n8n, collega 4 nodi HTTP Request in sequenza con la stessa credenziale Basic Auth.</p>
+      <p style="color:#94a3b8; margin-bottom: 16px;">Simula un acquisto completo: cerca prodotti, aggiungili al carrello, crea un ordine e verificalo.</p>
       <div class="flow">
         <div class="flow-step"><div class="flow-step-num">Passo 1</div><div class="flow-step-title">Cerca Prodotti</div><div class="flow-step-detail">GET /api/products?search=cuffie</div></div>
         <div class="flow-arrow">→</div>
