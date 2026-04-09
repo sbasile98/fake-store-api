@@ -1,6 +1,6 @@
-# Fake Store API 🛒
+# Fake Store API
 
-API e-commerce per il corso di formazione n8n. Simula un negozio online tipo Amazon con autenticazione JWT.
+API e-commerce completa con autenticazione Basic Auth, prodotti, carrello, ordini e gestione utenti.
 
 ## Quick Start
 
@@ -9,7 +9,7 @@ npm install
 npm start
 ```
 
-L'API sarà disponibile su `http://localhost:3000`
+L'API sara' disponibile su `http://localhost:3000` con la documentazione interattiva.
 
 > Al primo avvio il database viene creato e popolato automaticamente con 50 prodotti, 6 categorie e 5 utenti.
 > Per resettare i dati, elimina il file `database.sqlite` e riavvia.
@@ -26,66 +26,51 @@ L'API sarà disponibile su `http://localhost:3000`
 
 ## Autenticazione
 
-L'API usa **JWT Bearer Token**. Per le chiamate autenticate, aggiungi l'header:
-
-```
-Authorization: Bearer <il-tuo-token>
-```
-
-Ottieni il token tramite login:
+L'API usa **Basic Auth** su tutte le route. Ogni richiesta richiede email e password:
 
 ```bash
-curl -X POST http://localhost:3000/api/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{"email": "mario.rossi@example.com", "password": "password123"}'
+curl -u mario.rossi@example.com:password123 http://localhost:3000/api/products
 ```
 
 ## Endpoints
 
-### Auth (Pubblici)
+### Prodotti (Basic Auth, CRUD Admin)
 
 | Metodo | Path | Descrizione |
 |--------|------|-------------|
-| POST | `/api/auth/register` | Registra nuovo account |
-| POST | `/api/auth/login` | Login, ritorna JWT token |
-
-### Prodotti (Pubblici, CRUD Admin)
-
-| Metodo | Path | Auth | Descrizione |
-|--------|------|------|-------------|
-| GET | `/api/products` | No | Lista prodotti |
-| GET | `/api/products/:id` | No | Dettaglio prodotto |
-| POST | `/api/products` | Admin | Crea prodotto |
-| PUT | `/api/products/:id` | Admin | Aggiorna prodotto |
-| DELETE | `/api/products/:id` | Admin | Elimina prodotto |
+| GET | `/api/products` | Lista prodotti con filtri e paginazione |
+| GET | `/api/products/all` | Tutti i prodotti (senza paginazione) |
+| GET | `/api/products/:id` | Dettaglio prodotto |
+| POST | `/api/products` | Crea prodotto (Admin) |
+| PUT | `/api/products/:id` | Aggiorna prodotto (Admin) |
+| DELETE | `/api/products/:id` | Elimina prodotto (Admin) |
 
 **Query params per GET /api/products:**
 - `page` - Pagina (default: 1)
 - `limit` - Prodotti per pagina (default: 10, max: 100)
 - `search` - Cerca nel titolo, descrizione e brand
 - `category` - Filtra per slug o ID categoria
-- `minPrice` - Prezzo minimo
-- `maxPrice` - Prezzo massimo
+- `minPrice` / `maxPrice` - Range prezzo
 - `sort` - Ordinamento: `price_asc`, `price_desc`, `rating`, `newest`
 
-### Categorie (Pubblici)
+### Categorie (Basic Auth)
 
 | Metodo | Path | Descrizione |
 |--------|------|-------------|
 | GET | `/api/categories` | Lista categorie |
 | GET | `/api/categories/:id/products` | Prodotti per categoria |
 
-### Carrello (Autenticazione richiesta)
+### Carrello (Basic Auth)
 
 | Metodo | Path | Descrizione |
 |--------|------|-------------|
 | GET | `/api/cart` | Vedi carrello |
-| POST | `/api/cart/items` | Aggiungi prodotto (`{productId, quantity}`) |
-| PUT | `/api/cart/items/:productId` | Aggiorna quantità (`{quantity}`) |
+| POST | `/api/cart/items` | Aggiungi prodotto |
+| PUT | `/api/cart/items/:productId` | Aggiorna quantita' |
 | DELETE | `/api/cart/items/:productId` | Rimuovi prodotto |
 | DELETE | `/api/cart` | Svuota carrello |
 
-### Ordini (Autenticazione richiesta)
+### Ordini (Basic Auth)
 
 | Metodo | Path | Descrizione |
 |--------|------|-------------|
@@ -95,7 +80,7 @@ curl -X POST http://localhost:3000/api/auth/login \
 | PUT | `/api/orders/:id/status` | Aggiorna stato (Admin) |
 | DELETE | `/api/orders/:id` | Cancella ordine (solo se pending) |
 
-### Utenti (Autenticazione richiesta)
+### Utenti (Basic Auth)
 
 | Metodo | Path | Descrizione |
 |--------|------|-------------|
@@ -103,26 +88,14 @@ curl -X POST http://localhost:3000/api/auth/login \
 | PUT | `/api/users/profile` | Aggiorna profilo |
 | GET | `/api/users` | Lista utenti (Admin) |
 
-## Esempio Flusso Completo in n8n
-
-1. **Login** → POST `/api/auth/login` → salva il `token` dalla risposta
-2. **Cerca prodotti** → GET `/api/products?search=headphones`
-3. **Aggiungi al carrello** → POST `/api/cart/items` con `{productId: 1, quantity: 2}` + header Auth
-4. **Vedi carrello** → GET `/api/cart` + header Auth
-5. **Crea ordine** → POST `/api/orders` + header Auth
-6. **Verifica ordine** → GET `/api/orders` + header Auth
-
 ## Formato Risposte
 
-**Successo:**
-```json
-{
-  "success": true,
-  "data": { ... },
-  "pagination": { "page": 1, "limit": 10, "total": 50, "totalPages": 5 },
-  "message": "Optional message"
-}
-```
+Le liste restituiscono direttamente un **array JSON**. La paginazione e' negli header HTTP:
+
+- `X-Total-Count` - Totale elementi
+- `X-Page` - Pagina corrente
+- `X-Per-Page` - Elementi per pagina
+- `X-Total-Pages` - Totale pagine
 
 **Errore:**
 ```json
@@ -136,9 +109,9 @@ curl -X POST http://localhost:3000/api/auth/login \
 
 | ID | Nome | Slug |
 |----|------|------|
-| 1 | Electronics | `electronics` |
-| 2 | Clothing | `clothing` |
-| 3 | Books | `books` |
-| 4 | Home & Kitchen | `home-kitchen` |
-| 5 | Sports & Outdoors | `sports-outdoors` |
-| 6 | Beauty & Personal Care | `beauty-personal-care` |
+| 1 | Elettronica | `elettronica` |
+| 2 | Abbigliamento | `abbigliamento` |
+| 3 | Libri | `libri` |
+| 4 | Casa e Cucina | `casa-cucina` |
+| 5 | Sport e Outdoor | `sport-outdoor` |
+| 6 | Bellezza e Cura della Persona | `bellezza-cura-persona` |

@@ -1,13 +1,13 @@
 {
   "name": "fake-store-api",
   "version": "1.0.0",
-  "description": "Fake E-commerce API for n8n training - simulates an Amazon-like store with JWT authentication",
+  "description": "Fake E-commerce API with Basic Auth - products, cart, orders and user management",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
-  "keywords": ["api", "ecommerce", "fake-store", "n8n", "training"],
+  "keywords": ["api", "ecommerce", "fake-store", "rest-api", "basic-auth"],
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^3.0.2",
