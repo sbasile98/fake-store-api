@@ -62,13 +62,25 @@ const products = [
   { title: 'Set Pennelli Trucco', description: 'Set professionale di 12 pennelli trucco con setole sintetiche, manici in bambu\' e custodia arrotolabile in pelle. Per fondotinta, cipria, contouring e occhi.', price: 29.99, sku: 'BELL-6008', categoryId: 6, brand: 'BeautyTools', rating: 4.5, ratingCount: 345 }
 ];
 
+function generateId() {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let id = '';
+  for (let i = 0; i < 6; i++) id += chars[Math.floor(Math.random() * chars.length)];
+  return id;
+}
+
 function seedProducts(db) {
+  const usedIds = new Set();
   const insert = db.prepare(
-    `INSERT INTO products (title, description, price, discountPrice, stock, sku, categoryId, image, images, rating, ratingCount, brand)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    `INSERT INTO products (id, title, description, price, discountPrice, stock, sku, categoryId, image, images, rating, ratingCount, brand)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
   );
 
   for (const p of products) {
+    let id = generateId();
+    while (usedIds.has(id)) id = generateId();
+    usedIds.add(id);
+
     const stock = Math.floor(Math.random() * 200) + 10;
     const image = `https://picsum.photos/seed/${p.sku}/400/400`;
     const images = JSON.stringify([
@@ -78,7 +90,7 @@ function seedProducts(db) {
     ]);
 
     insert.run(
-      p.title, p.description, p.price, p.discountPrice || null,
+      id, p.title, p.description, p.price, p.discountPrice || null,
       stock, p.sku, p.categoryId, image, images,
       p.rating, p.ratingCount, p.brand
     );

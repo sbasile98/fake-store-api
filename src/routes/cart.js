@@ -50,13 +50,13 @@ router.put('/items/:productId', (req, res) => {
     });
   }
 
-  const cart = Cart.updateItemQuantity(req.user.id, parseInt(req.params.productId), quantity);
+  const cart = Cart.updateItemQuantity(req.user.id, req.params.productId, quantity);
   res.json(cart);
 });
 
 // DELETE /api/cart/items/:productId
 router.delete('/items/:productId', (req, res) => {
-  const cart = Cart.removeItem(req.user.id, parseInt(req.params.productId));
+  const cart = Cart.removeItem(req.user.id, req.params.productId);
   res.json(cart);
 });
 
