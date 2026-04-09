@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const path = require('path');
 const fs = require('fs');
 const errorHandler = require('./src/middleware/errorHandler');
+const { basicAuth } = require('./src/middleware/auth');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,7 +20,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Documentation page
+// Documentation page (pubblica, senza auth)
 app.get('/', (req, res) => {
   const htmlPath = path.join(__dirname, 'src', 'views', 'docs.html');
   let html = fs.readFileSync(htmlPath, 'utf-8');
@@ -30,8 +31,10 @@ app.get('/', (req, res) => {
   res.type('html').send(html);
 });
 
+// Basic Auth su TUTTE le route /api
+app.use('/api', basicAuth);
+
 // API Routes
-app.use('/api/auth', require('./src/routes/auth'));
 app.use('/api/products', require('./src/routes/products'));
 app.use('/api/categories', require('./src/routes/categories'));
 app.use('/api/cart', require('./src/routes/cart'));
@@ -44,6 +47,7 @@ app.use(errorHandler);
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`\n🚀 Fake Store API in esecuzione su http://localhost:${PORT}`);
   console.log(`📖 Documentazione disponibile su http://localhost:${PORT}/`);
+  console.log(`\n🔐 Autenticazione: Basic Auth (email:password)`);
   console.log(`\n📧 Account di test:`);
   console.log(`   Admin:   admin@fakestoreapi.com / admin123`);
   console.log(`   Cliente: mario.rossi@example.com / password123\n`);

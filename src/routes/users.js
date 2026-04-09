@@ -1,9 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/user');
-const { authenticate, adminOnly } = require('../middleware/auth');
-
-// Tutte le route utente richiedono autenticazione
-router.use(authenticate);
+const { adminOnly } = require('../middleware/auth');
 
 // GET /api/users/profile
 router.get('/profile', (req, res) => {

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const Product = require('../models/product');
-const { authenticate, adminOnly } = require('../middleware/auth');
+const { adminOnly } = require('../middleware/auth');
 const { paginate } = require('../utils/helpers');
 
 // GET /api/products
@@ -24,6 +24,19 @@ router.get('/', (req, res) => {
   });
 });
 
+// GET /api/products/all - Tutti i prodotti senza paginazione
+router.get('/all', (req, res) => {
+  const { products, total } = Product.findAll({
+    page: 1, limit: 1000, offset: 0
+  });
+
+  res.json({
+    success: true,
+    data: products,
+    total
+  });
+});
+
 // GET /api/products/:id
 router.get('/:id', (req, res) => {
   const product = Product.findById(req.params.id);
@@ -39,7 +52,7 @@ router.get('/:id', (req, res) => {
 });
 
 // POST /api/products (Admin only)
-router.post('/', authenticate, adminOnly, (req, res) => {
+router.post('/', adminOnly, (req, res) => {
   const { title, description, price, discountPrice, stock, sku, categoryId, image, images, brand } = req.body;
 
   if (!title || !description || !price || !sku || !categoryId || !image) {
@@ -59,7 +72,7 @@ router.post('/', authenticate, adminOnly, (req, res) => {
 });
 
 // PUT /api/products/:id (Admin only)
-router.put('/:id', authenticate, adminOnly, (req, res) => {
+router.put('/:id', adminOnly, (req, res) => {
   const existing = Product.findById(req.params.id);
   if (!existing) {
     return res.status(404).json({
@@ -77,7 +90,7 @@ router.put('/:id', authenticate, adminOnly, (req, res) => {
 });
 
 // DELETE /api/products/:id (Admin only)
-router.delete('/:id', authenticate, adminOnly, (req, res) => {
+router.delete('/:id', adminOnly, (req, res) => {
   const existing = Product.findById(req.params.id);
   if (!existing) {
     return res.status(404).json({

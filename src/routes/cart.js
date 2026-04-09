@@ -1,10 +1,6 @@
 const router = require('express').Router();
 const Cart = require('../models/cart');
 const Product = require('../models/product');
-const { authenticate } = require('../middleware/auth');
-
-// Tutte le route del carrello richiedono autenticazione
-router.use(authenticate);
 
 // GET /api/cart
 router.get('/', (req, res) => {

@@ -1,11 +1,8 @@
 const router = require('express').Router();
 const Order = require('../models/order');
 const Cart = require('../models/cart');
-const { authenticate, adminOnly } = require('../middleware/auth');
+const { adminOnly } = require('../middleware/auth');
 const { paginate } = require('../utils/helpers');
-
-// Tutte le route degli ordini richiedono autenticazione
-router.use(authenticate);
 
 // POST /api/orders - Crea ordine dal carrello
 router.post('/', (req, res) => {
@@ -67,7 +64,6 @@ router.get('/:id', (req, res) => {
     });
   }
 
-  // Solo il proprietario o un admin puo' vedere l'ordine
   if (order.userId !== req.user.id && req.user.role !== 'admin') {
     return res.status(403).json({
       success: false,

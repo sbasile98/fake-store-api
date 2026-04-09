@@ -1,37 +1,48 @@
-const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 const db = require('../config/database');
 
-function authenticate(req, res, next) {
+function basicAuth(req, res, next) {
   const authHeader = req.headers.authorization;
 
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+  if (!authHeader || !authHeader.startsWith('Basic ')) {
+    res.set('WWW-Authenticate', 'Basic realm="Fake Store API"');
     return res.status(401).json({
       success: false,
-      error: 'Accesso negato. Nessun token fornito. Usa Authorization: Bearer <token>'
+      error: 'Autenticazione richiesta. Usa Basic Auth con email e password.'
     });
   }
 
-  const token = authHeader.split(' ')[1];
+  const base64Credentials = authHeader.split(' ')[1];
+  const credentials = Buffer.from(base64Credentials, 'base64').toString('utf-8');
+  const [email, password] = credentials.split(':');
 
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const user = db.prepare('SELECT id, email, firstName, lastName, role FROM users WHERE id = ?').get(decoded.id);
-
-    if (!user) {
-      return res.status(401).json({
-        success: false,
-        error: 'Token non valido. Utente non trovato.'
-      });
-    }
-
-    req.user = user;
-    next();
-  } catch (err) {
+  if (!email || !password) {
     return res.status(401).json({
       success: false,
-      error: 'Token non valido o scaduto.'
+      error: 'Credenziali non valide. Fornisci email e password.'
     });
   }
+
+  const user = db.prepare('SELECT * FROM users WHERE email = ?').get(email);
+
+  if (!user) {
+    return res.status(401).json({
+      success: false,
+      error: 'Email o password non validi.'
+    });
+  }
+
+  const validPassword = bcrypt.compareSync(password, user.password);
+  if (!validPassword) {
+    return res.status(401).json({
+      success: false,
+      error: 'Email o password non validi.'
+    });
+  }
+
+  const { password: _, ...userWithoutPassword } = user;
+  req.user = userWithoutPassword;
+  next();
 }
 
 function adminOnly(req, res, next) {
@@ -44,4 +55,4 @@ function adminOnly(req, res, next) {
   next();
 }
 
-module.exports = { authenticate, adminOnly };
+module.exports = { basicAuth, adminOnly };
