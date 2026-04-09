@@ -34,7 +34,7 @@ db.exec(`
     title         TEXT NOT NULL,
     description   TEXT NOT NULL,
     price         REAL NOT NULL,
-    discountPrice REAL,
+    warrantyMonths INTEGER DEFAULT 0,
     stock         INTEGER DEFAULT 100,
     sku           TEXT UNIQUE NOT NULL,
     categoryId    INTEGER NOT NULL,

@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
   const items = cart.items.map(item => ({
     productId: item.productId,
     quantity: item.quantity,
-    price: item.discountPrice || item.price
+    price: item.price
   }));
 
   const order = Order.create(req.user.id, items, cart.subtotal, shippingAddress, paymentMethod);

@@ -382,7 +382,7 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
               <tr><td>categoryId</td><td>ID categoria (obbligatorio)</td></tr>
               <tr><td>image</td><td>URL immagine (obbligatorio)</td></tr>
               <tr><td>brand</td><td>Marca (opzionale)</td></tr>
-              <tr><td>discountPrice</td><td>Prezzo scontato (opzionale)</td></tr>
+              <tr><td>warrantyMonths</td><td>Mesi di garanzia (opzionale, default 0)</td></tr>
               <tr><td>stock</td><td>Quantita' disponibile (opzionale)</td></tr>
             </table>
           </div>
@@ -473,17 +473,17 @@ curl <span class="string">-u mario.rossi@example.com:password123</span> \
                 <div class="cfg-value">
                   <span class="muted">Scegli "Using Fields Below" e aggiungi:</span>
                   <div class="cfg-json"><span class="jk">"price"</span>: <span class="jn">129.99</span>
-<span class="jk">"discountPrice"</span>: <span class="jn">99.99</span></div>
+<span class="jk">"warrantyMonths"</span>: <span class="jn">24</span></div>
                 </div>
               </div>
             </div>
           </div>
           <div class="curl-wrapper">
             <button class="copy-btn" onclick="copyCmd(this)">Copia</button>
-            <div class="curl-block" data-curl='curl -X PUT -u admin@fakestoreapi.com:admin123 -H "Content-Type: application/json" -d "{\"price\": 129.99, \"discountPrice\": 99.99}" {{BASE_URL}}/api/products/1'><span class="c">curl</span> <span class="f">-X PUT</span> \
+            <div class="curl-block" data-curl='curl -X PUT -u admin@fakestoreapi.com:admin123 -H "Content-Type: application/json" -d "{\"price\": 129.99, \"warrantyMonths\": 24}" {{BASE_URL}}/api/products/1'><span class="c">curl</span> <span class="f">-X PUT</span> \
   <span class="f">-u</span> <span class="u">admin@fakestoreapi.com:admin123</span> \
   <span class="f">-H</span> <span class="h">"Content-Type: application/json"</span> \
-  <span class="f">-d</span> <span class="d">'{"price": 129.99, "discountPrice": 99.99}'</span> \
+  <span class="f">-d</span> <span class="d">'{"price": 129.99, "warrantyMonths": 24}'</span> \
   <span class="h">{{BASE_URL}}/api/products/1</span></div>
           </div>
         </div>
