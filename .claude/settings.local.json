@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(kill %1)",
+      "Bash(pkill -f \"node server.js\")",
+      "Bash(taskkill //F //IM node.exe)",
+      "Bash(rm -f database.sqlite)",
+      "Bash(node server.js)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(gh auth:*)"
+    ]
+  }
+}
