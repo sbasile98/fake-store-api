@@ -81,11 +81,11 @@ const Product = {
       id = generateId();
     }
     db.prepare(
-      `INSERT INTO products (id, title, description, price, warrantyMonths, stock, sku, categoryId, image, images, rating, ratingCount, brand)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+      `INSERT INTO products (id, title, description, price, warrantyMonths, returnDays, stock, sku, categoryId, image, images, rating, ratingCount, brand)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
     ).run(
       id, data.title, data.description, data.price, data.warrantyMonths || 0,
-      data.stock || 100, data.sku, data.categoryId, data.image,
+      data.returnDays || 0, data.stock || 100, data.sku, data.categoryId, data.image,
       data.images ? JSON.stringify(data.images) : null,
       data.rating || 0, data.ratingCount || 0, data.brand || null
     );
@@ -93,7 +93,7 @@ const Product = {
   },
 
   update(id, data) {
-    const allowed = ['title', 'description', 'price', 'warrantyMonths', 'stock', 'categoryId', 'image', 'images', 'brand'];
+    const allowed = ['title', 'description', 'price', 'warrantyMonths', 'returnDays', 'stock', 'categoryId', 'image', 'images', 'brand'];
     const updates = [];
     const values = [];
 

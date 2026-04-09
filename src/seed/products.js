@@ -71,12 +71,14 @@ function generateId() {
 
 function seedProducts(db) {
   const usedIds = new Set();
-  // Garanzia per categoria: 1=Elettronica 24m, 2=Abbigliamento 1m, 4=Casa e Cucina 12m, 5=Sport e Outdoor 1m, resto 0
-  const warrantyByCategory = { 1: 24, 2: 1, 4: 12, 5: 1 };
+  // Garanzia: 1=Elettronica 24m, 4=Casa e Cucina 12m, resto 0
+  const warrantyByCategory = { 1: 24, 4: 12 };
+  // Reso: 1=Elettronica 30gg, 2=Abbigliamento 14gg, 3=Libri 7gg, 4=Casa e Cucina 14gg, 5=Sport e Outdoor 14gg, 6=Bellezza 7gg
+  const returnByCategory = { 1: 30, 2: 14, 3: 7, 4: 14, 5: 14, 6: 7 };
 
   const insert = db.prepare(
-    `INSERT INTO products (id, title, description, price, warrantyMonths, stock, sku, categoryId, image, images, rating, ratingCount, brand)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    `INSERT INTO products (id, title, description, price, warrantyMonths, returnDays, stock, sku, categoryId, image, images, rating, ratingCount, brand)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
   );
 
   for (const p of products) {
@@ -93,9 +95,10 @@ function seedProducts(db) {
     ]);
 
     const warrantyMonths = warrantyByCategory[p.categoryId] || 0;
+    const returnDays = returnByCategory[p.categoryId] || 0;
 
     insert.run(
-      id, p.title, p.description, p.price, warrantyMonths,
+      id, p.title, p.description, p.price, warrantyMonths, returnDays,
       stock, p.sku, p.categoryId, image, images,
       p.rating, p.ratingCount, p.brand
     );

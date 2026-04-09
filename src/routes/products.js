@@ -48,7 +48,7 @@ router.get('/:id', (req, res) => {
 
 // POST /api/products (Admin only)
 router.post('/', adminOnly, (req, res) => {
-  const { title, description, price, warrantyMonths, stock, sku, categoryId, image, images, brand } = req.body;
+  const { title, description, price, warrantyMonths, returnDays, stock, sku, categoryId, image, images, brand } = req.body;
 
   if (!title || !description || !price || !sku || !categoryId || !image) {
     return res.status(400).json({
@@ -57,7 +57,7 @@ router.post('/', adminOnly, (req, res) => {
     });
   }
 
-  const product = Product.create({ title, description, price, warrantyMonths, stock, sku, categoryId, image, images, brand });
+  const product = Product.create({ title, description, price, warrantyMonths, returnDays, stock, sku, categoryId, image, images, brand });
 
   res.status(201).json(product);
 });
